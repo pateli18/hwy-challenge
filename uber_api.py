@@ -3,6 +3,7 @@ import numpy as np
 import json
 import sys
 import requests
+import time
 
 def get_response(start_lat, start_lng, end_lat, end_lng, index, total):
 	url = 'https://api.uber.com/v1.2/estimates/price?start_latitude={0}&start_longitude={1}&end_latitude={2}&end_longitude={3}'.format(start_lat, start_lng, end_lat, end_lng)
@@ -44,6 +45,7 @@ def get_data(dataset_filepath, routes_filepath):
 		start_lng = df.iloc[route_id]['start station longitude']
 		end_lat = df.iloc[route_id]['end station latitude']
 		end_lng = df.iloc[route_id]['end station longitude']
+		start_time = time.time()
 		values = get_response(start_lat, start_lng, end_lat, end_lng, counter, total)
 		df.set_value(route_id,'routes_status_code', values[0])
 		df.set_value(route_id, 'uber_pool_distance', values[1])
@@ -57,6 +59,8 @@ def get_data(dataset_filepath, routes_filepath):
 		df.to_csv(routes_filepath, index = False)
 		ids_to_pull.remove(route_id)
 		counter = counter + 1
+		end_time = time.time()
+		time.sleep(min(1.8 - (end_time - start_time), 0))
 	print(df['routes_status_code'].value_counts())
 	print(df['routes_status_code'].isnull().sum())
 	print("Complete")
