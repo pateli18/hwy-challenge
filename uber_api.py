@@ -60,7 +60,7 @@ def get_data(dataset_filepath, routes_filepath):
 		ids_to_pull.remove(route_id)
 		counter = counter + 1
 		end_time = time.time()
-		time.sleep(min(1.8 - (end_time - start_time), 0))
+		time.sleep(max(1.8 - (end_time - start_time), 0))
 	print(df['routes_status_code'].value_counts())
 	print(df['routes_status_code'].isnull().sum())
 	print("Complete")
