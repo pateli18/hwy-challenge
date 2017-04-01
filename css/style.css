@@ -1,11 +1,11 @@
 
-#torque-wrapper {
+.torque-wrapper {
   width: 750px;
   height: 375px;
   position: relative;
 }
 
-#torque-header {
+.torque-header {
   position:absolute;
   right:10px;
   color:#ffffff;
@@ -27,7 +27,7 @@
   font-size:0.6em;
 }
 
-#torque-controls {
+.torque-controls {
     position: absolute;
     bottom: 16px;
     right: 10px;
@@ -36,7 +36,7 @@
     z-index: 3;
 }
 
-#torque-pause {
+.torque-pause {
     width: 1.2em;
     height: 1.2em;
     padding: 1px;
@@ -50,50 +50,50 @@
     float: left;
 }
 
-#torque-pause.playing {
+.torque-pause.playing {
   background-image: url(/images/pause.png);
 }
 
-#torque-slider {
+.torque-slider {
     width: 199px;
     float: right;
     margin-left: 18px;
     top: 3px;
 }
 
-#ui-slider {
+.ui-slider {
     position: relative;
     text-align: left;
 }
 
-#ui-slider-horizontal {
+.ui-slider-horizontal {
     height: .8em;
 }
 
-#ui-widget {
+.ui-widget {
     font-family: Arial,Helvetica,sans-serif;
     font-size: 1em;
 }
 
-#ui-widget-content {
+.ui-widget-content {
     border: 1px solid #ddd;
     background: #fff;
     color: #333;
 }
 
-#ui-corner-all {
+.ui-corner-all {
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
 }
 
-#ui-slider-horizontal #ui-slider-handle {
+.ui-slider-horizontal .ui-slider-handle {
     top: -.3em;
     margin-left: -.6em;
 }
 
-#ui-slider #ui-slider-handle {
+.ui-slider .ui-slider-handle {
     position: absolute;
     z-index: 3;
     width: 1.2em;
@@ -102,7 +102,7 @@
     touch-action: none;
 }
 
-#ui-state-default #ui-widget-content {
+.ui-state-default .ui-widget-content {
     border: 1px solid #c5c5c5;
     background: #f6f6f6;
     font-weight: normal;
