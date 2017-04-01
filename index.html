@@ -69,7 +69,7 @@
 						var strTime = hours + ':' + minutes + ' ' + ampm + " EST";
           				$("div#torque-time").text(strTime);
 
-          				sql_statement = 'SELECT COUNT(DISTINCT(trip)) AS current_bikes FROM hubway_trips_20160809 WHERE EXTRACT(HOUR FROM timestamp) = ' + datetime.getUTCHours() + ' AND EXTRACT(MINUTE FROM timestamp) = ' + datetime.getUTCMinutes();
+          				sql_statement = 'SELECT COUNT(DISTINCT(trip)) AS current_bikes FROM hubway_trips_20160809 WHERE EXTRACT(HOUR FROM timestamp) = ' + datetime.getUTCHours() + ' AND EXTRACT(MINUTE FROM timestamp) <= ' + datetime.getUTCMinutes() + ' AND EXTRACT(MINUTE FROM timestamp) >= ' (datetime.getUTCMinutes() - 5);
           				$.getJSON('https://pateli18.carto.com/api/v2/sql/?q='+sql_statement, function(data) {
           					$("div#torque-count").text(data['rows'][0]['current_bikes'] + ' Bikes');
           				});
