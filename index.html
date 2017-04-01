@@ -10,7 +10,7 @@
   <body>
     <div id="torque-wrapper">
     	<h2 id="torque-header">
-    		<div id="torque-timer"></div>
+    		<div id="torque-timer">12:00 am EST</div>
 			<div id="torque-saved-money"></div>
 			<div id="torque-saved-time"></div>
     	</h2>
@@ -71,10 +71,11 @@
           				$("div#torque-timer").text(strTime);
 
           				minute_in_day = datetime.getUTCHours() * 60 + datetime.getUTCMinutes();
+          				console.log(minute_in_day);
 						uber_cost_sql_statement = 'SELECT SUM(uber_cost) AS saved_money FROM hubway_trips_20160809 WHERE minute_in_day <= ' + minute_in_day;
 						$.getJSON('https://pateli18.carto.com/api/v2/sql/?q='+uber_cost_sql_statement, function(data) {
 							saved_money = data['rows'][0]['saved_money']
-							$("div#torque-saved-money").text(saved_money.toLocaleString('en-US', {currency:"USD", maximumFractionDigits:0, currencyDisplay:"symbol"}));
+							$("div#torque-saved-money").text('$' + saved_money.toLocaleString('en-US', {maximumFractionDigits:0}) + ' Saved');
 						});
 
 						uber_time_sql_statement = 'SELECT SUM(uber_duration_delta) AS saved_time FROM hubway_trips_20160809 WHERE minute_in_day <= ' + minute_in_day;
