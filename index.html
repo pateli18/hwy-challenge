@@ -31,10 +31,8 @@
     // Create Leaflet map object
     var map = L.map('map',{ center: [42.381899, -71.122499], zoom: 13});
     // Add Tile Layer basemap
-    L.tileLayer('http://tiles.mapc.org/basemap/{z}/{x}/{y}.png', {
-      attribution: 'Tiles by <a href="http://mapc.org">MAPC</a>, Data by <a href="http://mass.gov/mgis">MassGIS</a>',
-      maxZoom: 17,
-      minZoom: 9
+    L.tileLayer('http://{s}.api.cartocdn.com/base-dark/{z}/{x}/{y}.png', {
+	attribution: 'CARTO'
     }).addTo(map);
     // Global Variables
     // Will go here
