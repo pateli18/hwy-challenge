@@ -23,7 +23,6 @@
           </form>
         </div>
         <div id="credits"><p>Cbaababoffee Shop Data from <a href="http://www.referenceusa.com/">ReferenceUSA</a><br>#webMapWorkshop - &copy;2015, Mike Foster</p></div>
-      	<div id="torque-slider"></div>
       </div>
     </div>
 
@@ -71,7 +70,7 @@
           			layer.on('change:time', function(changes) {
           				datetime = changes["time"];
           				var elem = document.getElementById("torque-time");
-            			console.log('Current step: ' + datetime.getUTCHours());
+          				elem.value = datetime.getUTCHours() + ':' + datetime.getUTCMinutes()
           			});
 				})
 				.error(function(err) {
