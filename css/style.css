@@ -42,7 +42,8 @@
     padding: 1px;
     border-radius: 3px;
     cursor: pointer;
-    background-image: url(img/play.png);
+    background-color: white;
+    background-image: url(../img/play.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 16px;
@@ -50,7 +51,7 @@
 }
 
 .torque-pause.playing {
-  background-image: url(img/pause.png);
+  background-image: url(../img/pause.png);
 }
 
 .torque-slider {
@@ -101,7 +102,7 @@
     touch-action: none;
 }
 
-.ui-state-default .ui-widget-content {
+.ui-state-default, .ui-widget-content .ui-state-default {
     border: 1px solid #c5c5c5;
     background: #f6f6f6;
     font-weight: normal;
