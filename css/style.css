@@ -56,3 +56,10 @@ h1 {
   text-align: right;
   line-height: 16px;
 }
+
+#torque-slider {
+  position:absolute;
+  bottom:18px;
+  right:25px;
+  width:300px;
+}
