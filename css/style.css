@@ -13,15 +13,18 @@
   font-family:Menlo,Monaco,"Andale Mono","lucida console","Courier New",DotumChe,monospace;
   z-index:2;
   padding-top:0.05em;
-  line-height:1.4em;
 }
 
-#torque-time {
+#torque-timer {
   font-size:1.4em;
 }
 
-#torque-count {
-  font-size:0.9em;
+#torque-saved-money {
+  font-size:0.6em;
+}
+
+#torque-saved-time {
+  font-size:0.6em;
 }
 
 #map {
