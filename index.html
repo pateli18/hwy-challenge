@@ -7,45 +7,60 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 	</head>
 	<body>
+	    <div id="wrapper">
+      <div id="header">
+        <h1>Caffeinated Cambridge</h1>
+      </div>
+      <div id="map"></div>
+      <div id="controls">
+        <div id="form">
+          <form action="">
+            <input type="radio" name="filter" value="all" checked>Show All Coffee Shops
+            <input type="radio" name="filter" value="starbucks">Starbucks Only
+          </form>
+        </div>
+        <div id="credits"><p>Coffee Shop Data from <a href="http://www.referenceusa.com/">ReferenceUSA</a><br>#webMapWorkshop - &copy;2015, Mike Foster</p></div>
+      </div>
+    </div>
 	  	<div id="map"></div>
 			<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
-				<script>
-					var map = new L.Map('map', {
-						center: [42.381899, -71.122499],
-						zoom: 13
-					});
+			<script>
+				var map = new L.Map('map', {
+					center: [42.381899, -71.122499],
+					zoom: 13
+				});
 
-					L.tileLayer('http://tiles.mapc.org/basemap/{z}/{x}/{y}.png', {
-					attribution: 'CARTO'
-					}).addTo(map);
+				L.tileLayer('http://tiles.mapc.org/basemap/{z}/{x}/{y}.png', {
+				attribution: 'CARTO'
+				}).addTo(map);
 
-					<!--
-					var CARTOCSS = [
-						'Map {',
-						'-torque-time-attribute: "timestamp_alt";',
-						'-torque-aggregation-function: "count(1)";',
-						'-torque-frame-count: 1021;',
-						'-torque-animation-duration: 60;',
-						'-torque-resolution: 1;',
-						'-torque-data-aggregation: linear;'
-						'}',
-						'#layer {',
-						'  marker-width: 1;',
-						'  marker-fill-opacity: 0.71;',
-						'  marker-fill: #44a93d; ',
-						'  comp-op: "lighter";',
-						'}'
-					].join('\n');
+				<!--
+				var CARTOCSS = [
+					'Map {',
+					'-torque-time-attribute: "timestamp_alt";',
+					'-torque-aggregation-function: "count(1)";',
+					'-torque-frame-count: 1021;',
+					'-torque-animation-duration: 60;',
+					'-torque-resolution: 1;',
+					'-torque-data-aggregation: linear;'
+					'}',
+					'#layer {',
+					'  marker-width: 1;',
+					'  marker-fill-opacity: 0.71;',
+					'  marker-fill: #44a93d; ',
+					'  comp-op: "lighter";',
+					'}'
+				].join('\n');
 
-					var torqueLayer = new L.TorqueLayer({
-						user : 'pateli18',
-						table : 'hubway_trips_20160809',
-						cartocss: CARTOCSS
-					});
-					
-					torqueLayer.addTo(map);
-					torqueLayer.play()
-					-->
-				</script>
+				var torqueLayer = new L.TorqueLayer({
+					user : 'pateli18',
+					table : 'hubway_trips_20160809',
+					cartocss: CARTOCSS
+				});
+				
+				torqueLayer.addTo(map);
+				torqueLayer.play()
+				-->
+			</script>
 	</body>
 </html>
