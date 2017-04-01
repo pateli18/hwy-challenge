@@ -103,8 +103,21 @@
 							saved_time = data['rows'][0]['saved_time'] / 3600.0
 							$("div#torque-saved-time").text(saved_time.toLocaleString('en-US', {maximumFractionDigits:0}) + " Hours Saved");
 						});
+					});
 
-          			});
+					$( "div#slider" ).slider({
+  						start: function( event, ui ) {
+  							layer.pause()
+  						}
+					});
+
+					$( "div#slider" ).slider({
+  						slide: function( event, ui ) {
+  							layer.setStep(ui.value)
+  						}
+					});
+
+          			
 				})
 				.error(function(err) {
 				console.log("Error: " + err);
