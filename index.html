@@ -68,13 +68,9 @@
 		  	cartodb.createLayer(map, layerSource)
 				.addTo(map)
 				.done(function(layer) {
-					var slider = map.viz.timeSlider;
-          			slider.formatter(function(d) {
-            			return d.getUTCHours()+":"+d.getUTCMinutes();
-          			});
           			layer.on('change:time', function(time) {
-          				var time = document.getElementById("torque-time");
-            			time.value = time;
+          				var elem = document.getElementById("torque-time");
+            			elme.value = time;
           			});
 				})
 				.error(function(err) {
