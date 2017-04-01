@@ -42,8 +42,7 @@
     padding: 1px;
     border-radius: 3px;
     cursor: pointer;
-    background-color: white;
-    background-image: url(https://github.com/pateli18/hwy-challenge/blob/master/images/play.png?raw=true);
+    background-image: url(img/play.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 16px;
@@ -51,7 +50,7 @@
 }
 
 .torque-pause.playing {
-  background-image: url(https://github.com/pateli18/hwy-challenge/tree/master/images/pause.png?raw=true);
+  background-image: url(img/pause.png);
 }
 
 .torque-slider {
@@ -95,7 +94,7 @@
 
 .ui-slider .ui-slider-handle {
     position: absolute;
-    z-index: 4;
+    z-index: 5;
     width: 1.2em;
     height: 1.2em;
     cursor: default;
