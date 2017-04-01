@@ -12,7 +12,7 @@
   text-align:right;
   font-family:Menlo,Monaco,"Andale Mono","lucida console","Courier New",DotumChe,monospace;
   z-index:2;
-  padding-top:0.1em;
+  padding-top:0.05em;
   line-height:1.4em;
 }
 
@@ -31,38 +31,4 @@
   top: 0;
   left: 0;
   z-index: 1;
-}
-
-#controls {
-  width: 100%;
-  margin: 0 auto;
-  float: left;
-}
-
-#form {
-  margin-top: 5px;
-  font-size: 12px;
-  text-align: left;
-  line-height: 16px;
-  width:375px;
-  float: left;
-}
-
-#header {
-  margin-top: 0px;
-  margin-bottom: 0px;
-}
-
-#credits p {
-  margin-top: 5px;
-  font-size: 12px;
-  text-align: right;
-  line-height: 16px;
-}
-
-#torque-slider {
-  position:absolute;
-  bottom:18px;
-  right:25px;
-  width:300px;
 }
