@@ -71,13 +71,13 @@
           				$("div#torque-timer").text(strTime);
 
           				minute_in_day = datetime.getUTCHours() * 60 + datetime.getUTCMinutes();
-						uber_cost_sql_statement = 'SELECT SUM(uber_cost) AS saved_money FROM hubway_trips_20160809 WHERE minute_in_day <= ' minute_in_day;
+						uber_cost_sql_statement = 'SELECT SUM(uber_cost) AS saved_money FROM hubway_trips_20160809 WHERE minute_in_day <= ' + minute_in_day;
 						$.getJSON('https://pateli18.carto.com/api/v2/sql/?q='+uber_cost_sql_statement, function(data) {
 							saved_money = data['rows'][0]['saved_money']
 							$("div#torque-saved-money").text(saved_money.toLocaleString('en-US', {currency:"USD", maximumFractionDigits:0, currencyDisplay:"symbol"}));
 						});
 
-						uber_time_sql_statement = 'SELECT SUM(uber_duration_delta) AS saved_time FROM hubway_trips_20160809 WHERE minute_in_day <= ' minute_in_day;
+						uber_time_sql_statement = 'SELECT SUM(uber_duration_delta) AS saved_time FROM hubway_trips_20160809 WHERE minute_in_day <= ' + minute_in_day;
 						$.getJSON('https://pateli18.carto.com/api/v2/sql/?q='+uber_time_sql_statement, function(data) {
 							saved_time = data['rows'][0]['saved_time'] / 3600.0
 							$("div#torque-saved-time").text(saved_time.toLocaleString('en-US', {maximumFractionDigits:0}) + " Hours Saved");
