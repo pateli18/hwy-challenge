@@ -34,10 +34,33 @@
     L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z}/{x}/{y}.png', {
 	attribution: 'CARTO'
     }).addTo(map);
-    // Global Variables
-    // Will go here
-    // Database Queries
-    // Will go here
+
+	var CARTOCSS = [
+		'Map {',
+		'-torque-time-attribute: "timestamp_alt";',
+		'-torque-aggregation-function: "count(1)";',
+		'-torque-frame-count: 1021;',
+		'-torque-animation-duration: 60;',
+		'-torque-resolution: 1;',
+		'-torque-data-aggregation: linear;'
+		'}',
+		'#layer {',
+		'  marker-width: 1;',
+		'  marker-fill-opacity: 0.71;',
+		'  marker-fill: #44a93d; ',
+		'  comp-op: "lighter";',
+		'}'
+	].join('\n');
+
+	var torqueLayer = new L.TorqueLayer({
+		user : 'pateli18',
+		table : 'hubway_trips_20160809',
+		cartocss: CARTOCSS
+	});
+	
+	torqueLayer.addTo(map);
+	torqueLayer.play()
+						
     </script>
   </body>
 </html>
