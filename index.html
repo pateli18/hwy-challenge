@@ -10,7 +10,7 @@
   <body>
     <div id="torque-wrapper">
     	<h2 id="torque-header">
-    		<div id="torque-time">Testing</div>
+    		<div id="torque-time"></div>
 			<div id="torque-count">Test</div>
     	</h2>
       <div id="map"></div>
@@ -60,8 +60,8 @@
 					// add timer
           			layer.on('change:time', function(changes) {
           				datetime = changes["time"]
-          				var hours = datetime.getHours();
-						var minutes = datetime.getMinutes();
+          				var hours = datetime.getUTCHours();
+						var minutes = datetime.getUTCMinutes();
 						var ampm = hours >= 12 ? 'pm' : 'am';
 						hours = hours % 12;
 						hours = hours ? hours : 12; // the hour '0' should be '12'
