@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Cambridge Coffee Shops</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
@@ -15,15 +14,6 @@
 			<div id="torque-count">Test</div>
     	</h2>
       <div id="map"></div>
-      <div id="controls">
-        <div id="form">
-          <form action="">
-            <input type="radio" name="filter" value="all" checked>Show All Coffee Shops
-            <input type="radio" name="filter" value="starbucks">Starbucks Only
-          </form>
-        </div>
-        <div id="credits"><p>Cbaababoffee Shop Data from <a href="http://www.referenceusa.com/">ReferenceUSA</a><br>#webMapWorkshop - &copy;2015, Mike Foster</p></div>
-      </div>
     </div>
 
     <!-- include cartodb.js library -->
@@ -68,9 +58,7 @@
 				.addTo(map)
 				.done(function(layer) {
           			layer.on('change:time', function(changes) {
-          				datetime = changes["time"];
-          				var elem = document.getElementById("torque-time");
-          				elem.value = datetime.getUTCHours() + ':' + datetime.getUTCMinutes()
+          				$("div#torque-time").text(datetime.getUTCHours() + ':' + datetime.getUTCMinutes());
           			});
 				})
 				.error(function(err) {
