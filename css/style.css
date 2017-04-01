@@ -30,7 +30,7 @@
 .torque-controls {
     position: absolute;
     bottom: 16px;
-    right: 10px;
+    right: 0;
     padding: 8px 12px;
     background-color: rgba(112,112,112,0.5);
     z-index: 3;
