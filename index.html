@@ -70,8 +70,8 @@
 				.done(function(layer) {
           			layer.on('change:time', function(changes) {
           				var elem = document.getElementById("torque-time");
-            			elem.value = time;
-            			console.log('Current step: ' + changes.time.getTime());
+            			//elem.value = changes.time.getTime();
+            			console.log('Current step: ' + jQuery.type(changes));
           			});
 				})
 				.error(function(err) {
