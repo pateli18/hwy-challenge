@@ -66,8 +66,8 @@
 		  	cartodb.createLayer(map, layerSource)
 				.addTo(map)
 				.done(function(layer) {
-				// do stuff
-				var torqueLayer = layer;
+					var slider = layer.timeSlider;
+					slider.options.position = 'top|right';
 				})
 				.error(function(err) {
 				console.log("Error: " + err);
