@@ -32,6 +32,7 @@
     <script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/cartodb.js"></script>
     <script>
     	function main() {
+    		console.log("working")
 		    // Create Leaflet map object
 		    var map = L.map('map',{ center: [42.362690, -71.081154], zoom: 12});
 		    // Add Tile Layer basemap
@@ -71,7 +72,7 @@
           			layer.on('change:step', function(time) {
           				var elem = document.getElementById("torque-time");
             			elem.value = time;
-            			console.log('Current step' + time);
+            			console.log('Current step ' + time);
           			});
 				})
 				.error(function(err) {
