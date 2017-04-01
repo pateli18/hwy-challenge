@@ -20,8 +20,27 @@ h1 {
   font-weight: lighter;
 }
 
-#wrapper {
+#torque-wrapper {
   width: 750px;
+}
+
+#torque-header {
+  position:absolute;
+  right:10px;
+  color:#fff;
+  text-align:right;
+  font-family:Menlo,Monaco,"Andale Mono","lucida console","Courier New",DotumChe,monospace;
+  z-index:100;
+  padding-top:0.5em;
+  line-height:1.4em;
+}
+
+#torque-time {
+  font-size:1.4em;
+}
+
+#torque-count {
+  font-size:0.9em;
 }
 
 #map {
