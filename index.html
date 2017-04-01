@@ -5,6 +5,7 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+    <link rel="stylesheet" href="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/themes/css/cartodb.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
   <body>
@@ -26,41 +27,53 @@
 
     <!-- include cartodb.js library -->
     <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/cartodb.js"></script>
     <script>
-    // Create Leaflet map object
-    var map = L.map('map',{ center: [42.362690, -71.081154], zoom: 12});
-    // Add Tile Layer basemap
-    L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z}/{x}/{y}.png', {
-	attribution: 'CARTO'
-    }).addTo(map);
+    	function main() {
+		    // Create Leaflet map object
+		    var map = L.map('map',{ center: [42.362690, -71.081154], zoom: 12});
+		    // Add Tile Layer basemap
+		    L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z}/{x}/{y}.png', {
+			attribution: 'CARTO'
+		    }).addTo(map);
 
-	var CARTOCSS = [
-		'Map {',
-		'-torque-time-attribute: "timestamp_alt";',
-		'-torque-aggregation-function: "count(1)";',
-		'-torque-frame-count: 1021;',
-		'-torque-animation-duration: 60;',
-		'-torque-resolution: 1;',
-		'-torque-data-aggregation: "linear";',
-		'}',
-		'#layer {',
-		'  marker-width: 1;',
-		'  marker-fill-opacity: 0.71;',
-		'  marker-fill: #44a93d; ',
-		'  comp-op: "lighter"',
-		'}'
-	].join('\n');
+			var CARTOCSS = [
+				'Map {',
+				'-torque-time-attribute: "timestamp_alt";',
+				'-torque-aggregation-function: "count(1)";',
+				'-torque-frame-count: 1021;',
+				'-torque-animation-duration: 60;',
+				'-torque-resolution: 1;',
+				'-torque-data-aggregation: "linear";',
+				'}',
+				'#layer {',
+				'  marker-width: 1;',
+				'  marker-fill-opacity: 0.71;',
+				'  marker-fill: #44a93d; ',
+				'  comp-op: "lighter"',
+				'}'
+			].join('\n');
 
-	var torqueLayer = new L.TorqueLayer({
-		user : 'pateli18',
-		table : 'hubway_trips_20160809',
-		cartocss: CARTOCSS
-	});
-	
-	torqueLayer.addTo(map);
-	torqueLayer.play()
+			var layerSource = {
+			    type: 'torque',
+					options: {
+						user_name: 'pateli18',
+						table_name: 'hubway_trips_20160809',
+						cartocss: CARTOCSS
+					}
+		  		}
 
+		  	cartodb.createLayer(map, layerSource)
+				.addTo(map)
+				.done(function(layer) {
+				// do stuff
+				var torqueLayer = layer;
+				})
+				.error(function(err) {
+				console.log("Error: " + err);
+				});
+			}
+		window.onload = main;
     </script>
   </body>
 </html>
