@@ -32,8 +32,8 @@
 
 		  $(function() {
 		    $("div#slider").slider({
-		    		step:1
-		    		max:1021
+		    		step:1,
+		    		max:1021,
 		    		min:0
 				});
 		    }
@@ -80,7 +80,7 @@
           				datetime = changes["time"]
           				step = changes["step"]
 
-          				$( "div#slider" ).slider( "value", step );
+          				$( "div#slider" ).slider( "value", step);
 
           				var hours = datetime.getUTCHours();
 						var minutes = datetime.getUTCMinutes();
