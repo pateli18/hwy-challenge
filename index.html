@@ -68,7 +68,7 @@
 		  	cartodb.createLayer(map, layerSource)
 				.addTo(map)
 				.done(function(layer) {
-          			layer.on('change:step', function(time) {
+          			layer.on('change:steps', function(time) {
           				var elem = document.getElementById("torque-time");
             			elem.value = time;
             			console.log('Current step ' + time);
