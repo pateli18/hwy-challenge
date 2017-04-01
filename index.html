@@ -14,6 +14,7 @@
         <h1>Caffeinated Cambridge</h1>
       </div>
       <div id="map"></div>
+      <div id="torque-slider"></div>
       <div id="controls">
         <div id="form">
           <form action="">
@@ -30,6 +31,34 @@
     <script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/cartodb.js"></script>
     <script>
     	function main() {
+
+			function init_slider(torqueLayer) {
+				var torqueTime = $('#torque-time');
+				$("#torque-slider").slider({
+					min: 0,
+					max: torqueLayer.options.steps,
+					value: 0,
+					step: 1,
+					slide: function(event, ui){
+						var step = ui.value;
+						torqueLayer.setStep(step);
+					}
+				});
+				
+				// each time time changes, move the slider
+				torqueLayer.on('change:time', function(changes) {
+					$("#torque-slider" ).slider({ value: changes.step });
+					var month_year = changes.time.toString().substr(4).split(' ');
+					torqueTime.text(month_year[0] + " - " + month_year[2]);
+				});
+				
+				// play-pause toggle
+				$("#torque-pause").click(function(){
+					torqueLayer.toggle();
+					$(this).toggleClass('playing');
+				});
+			};
+
 		    // Create Leaflet map object
 		    var map = L.map('map',{ center: [42.362690, -71.081154], zoom: 12});
 		    // Add Tile Layer basemap
@@ -66,8 +95,7 @@
 		  	cartodb.createLayer(map, layerSource)
 				.addTo(map)
 				.done(function(layer) {
-					var slider = layer.timeSlider;
-					slider.options.position = 'top|right';
+					init_slider(layer);
 				})
 				.error(function(err) {
 				console.log("Error: " + err);
