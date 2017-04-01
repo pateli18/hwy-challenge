@@ -27,6 +27,88 @@
   font-size:0.6em;
 }
 
+#torque-controls {
+    position: absolute;
+    bottom: 16px;
+    right: 0;
+    padding: 8px 12px;
+    background-color: rgba(112,112,112,0.5);
+    z-index: 2;
+}
+
+#torque-pause {
+    width: 1.2em;
+    height: 1.2em;
+    padding: 1px;
+    border-radius: 3px;
+    cursor: pointer;
+    background-color: white;
+    background-image: url(/images/play.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px;
+    float: left;
+}
+
+#torque-pause.playing {
+  background-image: url(/images/pause.png);
+}
+
+#torque-slider {
+    width: 199px;
+    float: right;
+    margin-left: 18px;
+    top: 3px;
+}
+
+#ui-slider {
+    position: relative;
+    text-align: left;
+}
+
+#ui-slider-horizontal {
+    height: .8em;
+}
+
+#ui-widget {
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 1em;
+}
+
+#ui-widget-content {
+    border: 1px solid #ddd;
+    background: #fff;
+    color: #333;
+}
+
+#ui-corner-all {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+#ui-slider-horizontal #ui-slider-handle {
+    top: -.3em;
+    margin-left: -.6em;
+}
+
+#ui-slider #ui-slider-handle {
+    position: absolute;
+    z-index: 3;
+    width: 1.2em;
+    height: 1.2em;
+    cursor: default;
+    touch-action: none;
+}
+
+#ui-state-default #ui-widget-content {
+    border: 1px solid #c5c5c5;
+    background: #f6f6f6;
+    font-weight: normal;
+    color: #454545;   
+}
+
 #map {
   width: 100%;
   height: 100%;
@@ -35,3 +117,4 @@
   left: 0;
   z-index: 1;
 }
+
