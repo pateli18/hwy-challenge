@@ -4,15 +4,15 @@
 	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
 	<body>
 	<h1>test</h1>
-	  	<div id="map"></div>
+	  	<div id="map" style="width:600px; height:400px;"></div>
 			<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
 				<script>
 					window.onload = function() {
 
 						var map = new L.Map('map', {
-						zoomControl: true,
-						center: [40, 0],
-						zoom: 3
+							zoomControl: true,
+							center: [40, 0],
+							zoom: 3
 						});
 
 						L.tileLayer('http://{s}.api.cartocdn.com/base-dark/{z}/{x}/{y}.png', {
@@ -44,7 +44,7 @@
 						
 						torqueLayer.addTo(map);
 						torqueLayer.play()
-				}
+					}
 				</script>
 	</body>
 </html>
