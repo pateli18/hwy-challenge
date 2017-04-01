@@ -69,9 +69,9 @@
 				.addTo(map)
 				.done(function(layer) {
           			layer.on('change:time', function(changes) {
+          				datetime = changes["time"];
           				var elem = document.getElementById("torque-time");
-            			elem.value = changes["time"];
-            			console.log('Current step: ' + changes["time"]);
+            			console.log('Current step: ' + datetime.getUTCHours());
           			});
 				})
 				.error(function(err) {
