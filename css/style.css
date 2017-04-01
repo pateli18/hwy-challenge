@@ -1,27 +1,8 @@
-body {
-  margin: 0px;
-  font-family: 'Open Sans', Helvetica, sans-serif;
-}
-
-img {
-  float: left;
-  padding-right: 10px;
-}
-
-p {
-  font-size: 15px;
-  line-height: 25px;
-}
-
-h1 {
-  line-height: 60px;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  font-weight: lighter;
-}
 
 #torque-wrapper {
   width: 750px;
+  height: 375px;
+  position: relative;
 }
 
 #torque-header {
@@ -30,7 +11,7 @@ h1 {
   color:#fff;
   text-align:right;
   font-family:Menlo,Monaco,"Andale Mono","lucida console","Courier New",DotumChe,monospace;
-  z-index:100;
+  z-index:1;
   padding-top:0.5em;
   line-height:1.4em;
 }
@@ -44,9 +25,12 @@ h1 {
 }
 
 #map {
-  width: 750px;
-  margin: 0 auto;
-  height: 375px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
 }
 
 #controls {
