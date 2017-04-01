@@ -15,7 +15,7 @@
 			<div id="torque-saved-time"></div>
     	</h2>
     	<div class="torque-controls">
-      		<div class="torque-pause"></div>
+      		<div class="torque-pause" id="pause_button"></div>
       		<div class="torque-slider" id="slider">
       		</div>
       	</div>
@@ -108,6 +108,7 @@
 					$( "div#slider" ).slider({
   						start: function( event, ui ) {
   							layer.pause()
+  							document.getElementById("pause_button").style.backgroundImage="url(../img/play.png)";
   						}
 					});
 
@@ -117,7 +118,18 @@
   						}
 					});
 
-          			
+					function play_pause() {
+						if (layer.isRunning()) {
+							document.getElementById("pause_button").style.backgroundImage="url(../img/play.png)";
+							layer.pause()
+						} else {
+							document.getElementById("play_button").style.backgroundImage="url(../img/play.png)";
+							layer.play()
+						}
+					};
+
+					document.getElementById("pause_button").addEventListener("click", losAudio_playPause);
+
 				})
 				.error(function(err) {
 				console.log("Error: " + err);
