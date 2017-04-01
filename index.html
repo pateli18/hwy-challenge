@@ -23,45 +23,19 @@
         <div id="credits"><p>Coffee Shop Data from <a href="http://www.referenceusa.com/">ReferenceUSA</a><br>#webMapWorkshop - &copy;2015, Mike Foster</p></div>
       </div>
     </div>
-			<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+			<!--<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>-->
+			<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 			<script>
-				var map = new L.Map('map', {
-					center: [42.381899, -71.122499],
-					zoom: 13
-				});
 
-				L.tileLayer('http://tiles.mapc.org/basemap/{z}/{x}/{y}.png', {
-				attribution: 'CARTO'
-				}).addTo(map);
+			var map = L.map('map',{ center: [42.381899, -71.122499], zoom: 13});
+			// Add Tile Layer basemap
+			L.tileLayer('http://tiles.mapc.org/basemap/{z}/{x}/{y}.png', {
+			  attribution: 'Tiles by <a href="http://mapc.org">MAPC</a>, Data by <a href="http://mass.gov/mgis">MassGIS</a>',
+			  maxZoom: 17,
+			  minZoom: 9
+			}).addTo(map);
 
-				<!--
-				var CARTOCSS = [
-					'Map {',
-					'-torque-time-attribute: "timestamp_alt";',
-					'-torque-aggregation-function: "count(1)";',
-					'-torque-frame-count: 1021;',
-					'-torque-animation-duration: 60;',
-					'-torque-resolution: 1;',
-					'-torque-data-aggregation: linear;'
-					'}',
-					'#layer {',
-					'  marker-width: 1;',
-					'  marker-fill-opacity: 0.71;',
-					'  marker-fill: #44a93d; ',
-					'  comp-op: "lighter";',
-					'}'
-				].join('\n');
-
-				var torqueLayer = new L.TorqueLayer({
-					user : 'pateli18',
-					table : 'hubway_trips_20160809',
-					cartocss: CARTOCSS
-				});
-				
-				torqueLayer.addTo(map);
-				torqueLayer.play()
-				-->
 			</script>
 	</body>
 </html>
