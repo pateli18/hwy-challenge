@@ -16,8 +16,7 @@
     	</h2>
     	<div class="torque-controls">
       		<div class="torque-pause"></div>
-      		<div class="torque-slider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
-      			<span id="slider"></span>
+      		<div class="torque-slider" id="slider">
       		</div>
       	</div>
       	<div id="map"></div>
@@ -31,7 +30,7 @@
     <script>
 
 		  $(function() {
-		    $("span#slider").slider();
+		    $("div#slider").slider();
 		  } );
 
     	function main() {
