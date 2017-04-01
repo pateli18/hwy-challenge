@@ -123,12 +123,12 @@
 							document.getElementById("pause_button").style.backgroundImage="url(../img/play.png)";
 							layer.pause()
 						} else {
-							document.getElementById("play_button").style.backgroundImage="url(../img/play.png)";
+							document.getElementById("play_button").style.backgroundImage="url(../img/pause.png)";
 							layer.play()
 						}
 					};
 
-					document.getElementById("pause_button").addEventListener("click", losAudio_playPause);
+					document.getElementById("pause_button").addEventListener("click", play_pause);
 
 				})
 				.error(function(err) {
