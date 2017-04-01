@@ -71,7 +71,7 @@
           			layer.on('change:time', function(changes) {
           				var elem = document.getElementById("torque-time");
             			//elem.value = changes.time.getTime();
-            			console.log('Current step: ' + changes.getTime());
+            			console.log('Current step: ' + Object.prototype.toString.call(changes);
           			});
 				})
 				.error(function(err) {
