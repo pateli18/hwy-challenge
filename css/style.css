@@ -27,6 +27,7 @@ h1 {
 #torque-header {
   position:absolute;
   right:10px;
+  color:#fff;
   text-align:right;
   font-family:Menlo,Monaco,"Andale Mono","lucida console","Courier New",DotumChe,monospace;
   z-index:100;
