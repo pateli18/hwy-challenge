@@ -31,7 +31,7 @@
     // Create Leaflet map object
     var map = L.map('map',{ center: [42.381899, -71.122499], zoom: 13});
     // Add Tile Layer basemap
-    L.tileLayer('http://{s}.api.cartocdn.com/base-dark/{z}/{x}/{y}.png', {
+    L.tileLayer('{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png', {
 	attribution: 'CARTO'
     }).addTo(map);
     // Global Variables
