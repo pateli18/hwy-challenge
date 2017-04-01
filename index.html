@@ -29,8 +29,14 @@
 	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script>
 
+
 		  $(function() {
-		    $("div#slider").slider();
+		    $("div#slider").slider({
+		    		step:1
+		    		max:1021
+		    		min:0
+				});
+		    }
 		  } );
 
     	function main() {
@@ -72,6 +78,10 @@
 					// add timer
           			layer.on('change:time', function(changes) {
           				datetime = changes["time"]
+          				step = changes["step"]
+
+          				$( "div#slider" ).slider( "value", step );
+
           				var hours = datetime.getUTCHours();
 						var minutes = datetime.getUTCMinutes();
 						var ampm = hours >= 12 ? 'pm' : 'am';
