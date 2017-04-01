@@ -68,10 +68,7 @@
 		  	cartodb.createLayer(map, layerSource)
 				.addTo(map)
 				.done(function(layer) {
-          			layer.on('change:time', function(time) {
-          				var elem = document.getElementById("torque-time");
-            			elme.value = time;
-          			});
+
 				})
 				.error(function(err) {
 				console.log("Error: " + err);
