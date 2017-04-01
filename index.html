@@ -58,6 +58,7 @@
 				.addTo(map)
 				.done(function(layer) {
           			layer.on('change:time', function(changes) {
+          				datetime = changes["time"]
           				$("div#torque-time").text(datetime.getUTCHours() + ':' + datetime.getUTCMinutes());
           			});
 				})
