@@ -59,7 +59,7 @@
 				'  marker-fill-opacity: 0.71;',
 				'  marker-fill: #44a93d; ',
 				'  comp-op: "lighter";',
-				'  time_slider: false;',
+				'  time_slider: false',
 				'}'
 			].join('\n');
 
@@ -109,7 +109,7 @@
 					$( "div#slider" ).slider({
   						start: function( event, ui ) {
   							layer.pause()
-  							document.getElementById("pause_button").style.backgroundImage="url(../img/play.png)";
+  							$(".torque-pause").style.backgroundImage="url(../img/play.png)";
   						}
 					});
 
@@ -121,10 +121,10 @@
 
 					function play_pause() {
 						if (layer.isRunning()) {
-							document.getElementById("pause_button").style.backgroundImage="url(../img/play.png)";
+							$(".torque-pause").style.backgroundImage="url(../img/play.png)";
 							layer.pause()
 						} else {
-							document.getElementById("pause_button").style.backgroundImage="url(../img/pause.png)";
+							$(".torque-pause").style.backgroundImage="url(../img/pause.png)";
 							layer.play()
 						}
 					};
