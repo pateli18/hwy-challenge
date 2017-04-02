@@ -84,28 +84,30 @@
           				$( "div#slider" ).slider( "value", step);
 
           				if (!isNaN(datetime)) {
-	          				var hours = datetime.getUTCHours();
-							var minutes = datetime.getUTCMinutes();
-							var ampm = hours >= 12 ? 'pm' : 'am';
-							hours = hours % 12;
+	          				var hours_raw = datetime.getUTCHours();
+							var minutes_raw = datetime.getUTCMinutes();
+							var ampm = hours_raw >= 12 ? 'pm' : 'am';
+							var hours = hours_raw % 12;
 							hours = hours ? hours : 12; // the hour '0' should be '12'
-							minutes = minutes < 10 ? '0'+minutes : minutes;
+							var minutes = minutes_raw < 10 ? '0'+minutes_raw : minutes_raw;
 							var strTime = hours + ':' + minutes + ' ' + ampm + " EST";
 	          				$("div#torque-timer").text(strTime);
 
-	          				minute_in_day = datetime.getUTCHours() * 60 + datetime.getUTCMinutes();
-	          				console.log(minute_in_day);
-							uber_cost_sql_statement = 'SELECT SUM(uber_cost) AS saved_money FROM hubway_trips_20160809 WHERE minute_in_day <= ' + minute_in_day;
-							$.getJSON('https://pateli18.carto.com/api/v2/sql/?q='+uber_cost_sql_statement, function(data) {
-								saved_money = data['rows'][0]['saved_money'];
-								$("div#torque-saved-money").text('$' + saved_money.toLocaleString('en-US', {maximumFractionDigits:0}) + ' Saved');
-							});
+	          				if(minutes_raw % 10 == 0) {
+		          				minute_in_day = hours_raw * 60 + minutes_raw;
+		          				console.log(minute_in_day);
+								uber_cost_sql_statement = 'SELECT SUM(uber_cost) AS saved_money FROM hubway_trips_20160809 WHERE minute_in_day <= ' + minute_in_day;
+								$.getJSON('https://pateli18.carto.com/api/v2/sql/?q='+uber_cost_sql_statement, function(data) {
+									saved_money = data['rows'][0]['saved_money'];
+									$("div#torque-saved-money").text('$' + saved_money.toLocaleString('en-US', {maximumFractionDigits:0}) + ' Saved');
+								});
 
-							uber_time_sql_statement = 'SELECT SUM(uber_duration_delta) AS saved_time FROM hubway_trips_20160809 WHERE minute_in_day <= ' + minute_in_day;
-							$.getJSON('https://pateli18.carto.com/api/v2/sql/?q='+uber_time_sql_statement, function(data) {
-								saved_time = data['rows'][0]['saved_time'] / 3600.0;
-								$("div#torque-saved-time").text(saved_time.toLocaleString('en-US', {maximumFractionDigits:0}) + " Additional Hours");
-							});
+								uber_time_sql_statement = 'SELECT SUM(uber_duration_delta) AS saved_time FROM hubway_trips_20160809 WHERE minute_in_day <= ' + minute_in_day;
+								$.getJSON('https://pateli18.carto.com/api/v2/sql/?q='+uber_time_sql_statement, function(data) {
+									saved_time = data['rows'][0]['saved_time'] / 3600.0;
+									$("div#torque-saved-time").text(saved_time.toLocaleString('en-US', {maximumFractionDigits:0}) + " Additional Hours");
+								});
+							}
 						}
 					});
 
