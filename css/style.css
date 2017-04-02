@@ -43,15 +43,15 @@
     border-radius: 3px;
     cursor: pointer;
     background-color: white;
-    background-image: url(../img/play.png);
+    background-image: url(../img/pause.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 16px;
     float: left;
 }
 
-.torque-pause.playing {
-  background-image: url(../img/pause.png);
+.torque-pause .play {
+    background-image: url(../img/play.png);
 }
 
 .torque-slider {
