@@ -50,7 +50,7 @@
     float: left;
 }
 
-.torque-pause .play {
+.torque-pause.play {
     background-image: url(../img/play.png);
 }
 
