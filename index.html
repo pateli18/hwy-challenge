@@ -67,12 +67,11 @@
 					options: {
 						user_name: 'pateli18',
 						table_name: 'hubway_trips_20160809',
-						cartocss: CARTOCSS,
-						time_slider: false
+						cartocss: CARTOCSS
 					}
 		  		}
 
-		  	cartodb.createLayer(map, layerSource)
+		  	cartodb.createLayer(map, layerSource, {time_slider:false})
 				.addTo(map)
 				.done(function(layer) {
 					// add timer
