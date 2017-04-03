@@ -5,11 +5,11 @@ import sys
 import requests
 import datetime
 
-def get_response(start_lat, start_lng, end_lat, end_lng, departure_time, index, total):
+def get_response(start_lat, start_lng, end_lat, end_lng, departure_time, index, total, mode):
 	url = 'https://maps.googleapis.com/maps/api/distancematrix/json?'
 	api_key = 'AIzaSyBxr-Lw3k3Vutwslnhd8cdGgLmY7KjTuU4'
 	data = {'origins' : '{0},{1}'.format(start_lat,start_lng), 'departure_time':str(departure_time),
-	'destinations':'{0},{1}'.format(end_lat,end_lng),'key':api_key}
+	'destinations':'{0},{1}'.format(end_lat,end_lng),'key':api_key, 'mode':mode}
 	try:
 		response = requests.get(url, params = data)
 		status_code = response.status_code
@@ -18,7 +18,7 @@ def get_response(start_lat, start_lng, end_lat, end_lng, departure_time, index, 
 		data = data['rows'][0]['elements'][0]
 		duration = data['duration']['value']
 		distance = data['distance']['value']
-		duration_in_traffic = data['duration_in_traffic']['value']
+		duration_in_traffic = data['duration_in_traffic']['value'] if mode == 'driving' else None
 		values = [status_code, duration, distance, duration_in_traffic]
 	except:
 		print("Error")
@@ -26,14 +26,14 @@ def get_response(start_lat, start_lng, end_lat, end_lng, departure_time, index, 
 	print("{0} out of {1} | {2:.2f}% Complete".format(index, total, index*1./total * 100))
 	return values
 
-def get_data(dataset_filepath, routes_filepath):
+def get_data(dataset_filepath, routes_filepath, mode):
 	try:
 		df = pd.read_csv(routes_filepath)
 	except IOError:
 		df = pd.read_csv(dataset_filepath)
 		df['routes_id'] = df.index
-		df = df[['routes_id','start station latitude','start station longitude',
-		'end station latitude', 'end station longitude', 'weekday', 'hour']]
+		df = df[['routes_id', 'start station id','end station id','start station latitude','start station longitude',
+		'end station latitude', 'end station longitude', 'dayofweek', 'hour']]
 		df['routes_status_code'] = df['routes_id'].apply(lambda x: None)
 	ids_pulled = [int(i[0]) for i in df[['routes_id', 'routes_status_code']].values if pd.notnull(i[1])]
 	ids_to_pull = [int(i[0]) for i in df[['routes_id', 'routes_status_code']].values if pd.isnull(i[1])]
@@ -45,7 +45,7 @@ def get_data(dataset_filepath, routes_filepath):
 		today = datetime.datetime.today()
 		current_weekday = today.weekday()
 		current_hour = today.hour
-		weekday = int(df.iloc[route_id]['weekday'])
+		weekday = int(df.iloc[route_id]['dayofweek'])
 		hour = int(df.iloc[route_id]['hour'])
 		hour_difference = hour - current_hour
 		hour_difference = 1 if hour_difference < 1 else 0
@@ -57,7 +57,7 @@ def get_data(dataset_filepath, routes_filepath):
 		start_lng = df.iloc[route_id]['start station longitude']
 		end_lat = df.iloc[route_id]['end station latitude']
 		end_lng = df.iloc[route_id]['end station longitude']
-		values = get_response(start_lat, start_lng, end_lat, end_lng, departure_time, counter, total)
+		values = get_response(start_lat, start_lng, end_lat, end_lng, departure_time, counter, total, mode)
 		df.set_value(route_id,'routes_status_code', values[0])
 		df.set_value(route_id, 'duration', values[1])
 		df.set_value(route_id, 'distance', values[2])
@@ -71,4 +71,5 @@ def get_data(dataset_filepath, routes_filepath):
 
 dataset_filepath = sys.argv[1]
 routes_filepath = sys.argv[2]
-get_data(dataset_filepath, routes_filepath)
+mode = sys.argv[3]
+get_data(dataset_filepath, routes_filepath, mode)
