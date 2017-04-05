@@ -107,9 +107,9 @@
 			var torque_uber_layer = {
 			    type: 'torque',
 					options: {
+						query: 'SELECT (uber_value_delta_raw + uber_duration_delta_raw*(.20 - 2)) AS uber_value, hubway_trips_uber_20160809.* FROM hubway_trips_uber_20160809',
 						user_name: 'pateli18',
 						table_name: 'hubway_trips_uber_20160809',
-						//*sql: 'SELECT (uber_value_delta_raw + uber_duration_delta_raw*(.20 - 2)) AS uber_value, hubway_trips_uber_20160809.* FROM hubway_trips_uber_20160809',
 						cartocss: torque_CARTOCSS
 					}
 		  		}
