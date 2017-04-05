@@ -89,7 +89,7 @@
 			].join('\n');
 
 			var static_CARTOCSS = [
-				'#layer {',
+				'#hubway_trips_uber_20160809 {',
 				'  marker-width: 1;',
 				'  marker-fill-opacity: 0.5;',
 				'  marker-allow-overlap: true;',
@@ -125,6 +125,7 @@
 		  	cartodb.createLayer(static_uber_map, static_uber_layer)
 		  		.addTo(static_uber_map)
 		  		.done(function(layer) {
+		  			console.log("Map successfully created.");
 		  		});
 
 		  	/*
