@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="http://libs.cartodb.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
   </head>
   <body>
+  	<!--uber linear map-->
     <div class="torque-wrapper">
     	<h2 class="torque-header">
     		<div id="torque-timer">12:00 am EST</div>
@@ -21,8 +22,9 @@
       		<div class="torque-slider" id="slider">
       		</div>
       	</div>
-      	<div id="map" class="maps"></div>
+      	<div id="uber_linear_map" class="maps"></div>
     </div>
+    <!--uber cumulative map-->
     <div class="torque-wrapper">
     	<h2 class="torque-header">
     		<div id="torque-timer">12:00 am EST</div>
@@ -34,9 +36,36 @@
       		<div class="torque-slider" id="slider">
       		</div>
       	</div>
-      	<div id="static_uber_map" class="maps"></div>
+      	<div id="uber_cumulative_map" class="maps"></div>
     </div>
-
+    <!--transit linear map-->
+    <div class="torque-wrapper">
+    	<h2 class="torque-header">
+    		<div id="torque-timer">12:00 am EST</div>
+			<div id="torque-saved-value"></div>
+			<!--<div id="torque-saved-time"></div>-->
+    	</h2>
+    	<div class="torque-controls">
+      		<div class="torque-pause" id="pause_button"></div>
+      		<div class="torque-slider" id="slider">
+      		</div>
+      	</div>
+      	<div id="transit_linear_map" class="maps"></div>
+    </div>
+    <!--transit cumulative map-->
+    <div class="torque-wrapper">
+    	<h2 class="torque-header">
+    		<div id="torque-timer">12:00 am EST</div>
+			<div id="torque-saved-value"></div>
+			<!--<div id="torque-saved-time"></div>-->
+    	</h2>
+    	<div class="torque-controls">
+      		<div class="torque-pause" id="pause_button"></div>
+      		<div class="torque-slider" id="slider">
+      		</div>
+      	</div>
+      	<div id="transit_cumulative_map" class="maps"></div>
+    </div>
     <!-- include cartodb.js library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
     <!--<script src="https://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>-->
@@ -57,21 +86,16 @@
 
     	function main() {
 		    
-		    // Create Leaflet map object
-		    var map = L.map('map',{ center: [42.362690, -71.081154], zoom: 12});
-		    // Add Tile Layer basemap
+		    // uber_linear_map object
+		    var uber_linear_map = L.map('uber_linear_map',{ center: [42.362690, -71.081154], zoom: 12});
+		    
 		    L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z}/{x}/{y}.png', {
-		    }).addTo(map);
-			
-		    var static_uber_map = L.map('static_uber_map',{ center: [42.362690, -71.081154], zoom: 12});
-
-		    L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z}/{x}/{y}.png', {
-		    }).addTo(static_uber_map);
+		    }).addTo(uber_linear_map);
 
 			var torque_CARTOCSS = [
 				'Map {',
 				'-torque-time-attribute: "timestamp";',
-				'-torque-aggregation-function: "avg(uber_value)";',
+				'-torque-aggregation-function: "round(avg(uber_value))";',
 				'-torque-frame-count: 1021;',
 				'-torque-animation-duration: 60;',
 				'-torque-resolution: 1;',
@@ -82,57 +106,27 @@
 				'  marker-fill-opacity: 0.5;',
 				'  comp-op: "lighter";',
 				'}',
-				'#layer[value <= 0] {',
+				'#layer[value = 1] {',
 				'  marker-fill: #ff0000;',
 				'}',
-				'#layer[value > 0] {',
+				'#layer[value = 2] {',
 				'  marker-fill: #44a93d;',
 				'}',
 
 			].join('\n');
 
-			var static_CARTOCSS = [
-				'#layer {',
-				'  marker-width: 1;',
-				'  marker-fill-opacity: .5;',
-				'  marker-allow-overlap: true;',
-				'  marker-fill: #ff0000;',
-				'  marker-line-width: 0;',
-				'}',
-				'#layer[uber_value > 0] {',
-				'  marker-fill: #44a93d;',
-				'}',
-
-			].join('\n');
-
-			
 			var torque_uber_layer = {
 			    type: 'torque',
 					options: {
-						query: 'SELECT (uber_value_delta_raw + uber_duration_delta_raw*(.20 - 5)) AS uber_value, hubway_trips_uber_20160809.* FROM hubway_trips_uber_20160809',
+						query: 'SELECT (CASE WHEN (uber_cost + uber_duration_delta* 2) <= 0 THEN 1 ELSE 2 END) AS uber_value, hubway_trips_20160809.* FROM hubway_trips_uber_20160809',
 						user_name: 'pateli18',
 						table_name: 'hubway_trips_uber_20160809',
 						cartocss: torque_CARTOCSS
 					}
 		  		}
 
-		  	var static_uber_layer = {
-		  		user_name: 'pateli18',
-			    type: 'cartodb',
-					sublayers: [{
-						sql: 'SELECT * FROM hubway_trips_uber_20160809',
-						/*sql: 'SELECT (uber_value_delta_raw + uber_duration_delta_raw*(.20 - 2)) AS uber_value, hubway_trips_uber_20160809.* FROM hubway_trips_uber_20160809',*/
-						cartocss: static_CARTOCSS	
-					}]
-		  		}
-
-		  	cartodb.createLayer(static_uber_map, static_uber_layer)
-		  		.addTo(static_uber_map)
-		  		.done(function(layer) {
-		  		});
-
-		  	cartodb.createLayer(map, torque_uber_layer, {time_slider:false})
-				.addTo(map)
+		  	cartodb.createLayer(uber_linear_map, torque_uber_layer, {time_slider:false})
+				.addTo(uber_linear_map)
 				.done(function(layer) {
 					// add timer
           			layer.on('change:time', function(changes) {
@@ -200,6 +194,15 @@
 				.error(function(err) {
 				console.log("Error: " + err);
 				});
+
+
+
+
+
+
+
+
+
 			}
 		window.onload = main;
     </script>
