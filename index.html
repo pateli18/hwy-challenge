@@ -18,11 +18,11 @@
 			<!--<div id="torque-saved-time"></div>-->
     	</h2>
     	<div class="torque-controls-value">
-      		<div class="torque-slider" id="v_slider"></div>
+      		<div class="torque-slider-value" id="v_slider"></div>
       	</div>
     	<div class="torque-controls-time">
       		<div class="torque-pause" id="pause_button"></div>
-      		<div class="torque-slider" id="slider"></div>
+      		<div class="torque-slider-time" id="slider"></div>
       	</div>
       	<div id="uber_linear_map" class="maps"></div>
     </div>
@@ -46,7 +46,7 @@
 		    $("div#slider").slider({
 		    		step:1,
 		    		max:1021,
-		    		min:0
+		    		min:0,
 				});
 		  });
 
@@ -55,6 +55,7 @@
 		    		step:1,
 		    		max:50,
 		    		min:0,
+		    		orientation: 'vertical'
 				});
 		  });
 
@@ -143,7 +144,7 @@
           			$( "div#v_slider" ).slider({
   						slide: function( event, ui ) {
   							var value_per_minute = ui.value*.20
-							$("div#torque-time-value").text('$' + value_per_minute.toLocaleString('en-US', {maximumFractionDigits:2})  + ' per Minute');
+							$("div#torque-time-value").text('$' + value_per_minute.toLocaleString('en-US', {maximumFractionDigits:2; minimumFractionDigits:2})  + ' per Minute');
   						}
 					});
 
