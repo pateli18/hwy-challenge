@@ -30,7 +30,16 @@
   font-size:0.6em;
 }
 
-.torque-controls {
+.torque-controls-timer {
+    position: absolute;
+    bottom: 32px;
+    right: 0;
+    padding: 8px 12px;
+    background-color: rgba(112,112,112,0.5);
+    z-index: 4;
+}
+
+.torque-controls-timer {
     position: absolute;
     bottom: 16px;
     right: 0;
@@ -62,16 +71,6 @@
     float: right;
     margin-left: 18px;
     top: 3px;
-}
-
-.torque-v_slider {
-    height: 150px;
-    align-self: right;
-    margin-left: 18px;
-    top: 3px;
-    z-index: 4; 
-    position:relative;
-    right:10px;
 }
 
 .ui-slider {
