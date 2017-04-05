@@ -142,7 +142,7 @@
 
           			$( "div#v_slider" ).slider({
   						slide: function( event, ui ) {
-							$("div#torque-saved-value").text($ + (ui.value*.20).toLocaleString('en-US', {maximumFractionDigits:2}) + ' per Minute');
+							$("div#torque-saved-value").text($ + (ui.value*.20) + ' per Minute');
   						}
 					});
 
