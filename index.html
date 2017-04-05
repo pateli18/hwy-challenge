@@ -91,9 +91,9 @@
 			var static_CARTOCSS = [
 				'#hubway_trips_uber_20160809 {',
 				'  marker-width: 1;',
-				'  marker-fill-opacity: 0.5;',
+				'  marker-fill-opacity: 1;',
 				'  marker-allow-overlap: true;',
-				'  marker-fill: #ff0000;',
+				'  marker-fill: #44a93d;',
 				'}',
 				/*
 				'#layer[uber_value > 0] {',
@@ -118,7 +118,7 @@
 					sublayers: [{
 						sql: 'SELECT * FROM hubway_trips_uber_20160809',
 						/*sql: 'SELECT (uber_value_delta_raw + uber_duration_delta_raw*(.20 - 2)) AS uber_value, hubway_trips_uber_20160809.* FROM hubway_trips_uber_20160809',*/
-						cartocss: static_CARTOCSS,	
+						cartocss: "#hubway_trips_uber_20160809{marker-fill:#44a93d;marker-width:5;}"	
 					}]
 		  		}
 
