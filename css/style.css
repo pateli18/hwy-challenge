@@ -20,12 +20,12 @@
   font-size:1.4em;
 }
 
-#torque-saved-value {
-  color: #44a93d;
+#torque-time-value {
+  color: #FFB927;
   font-size:0.6em;
 }
 
-#torque-saved-time {
+#torque-saved-value {
   color: #ff0000;
   font-size:0.6em;
 }
