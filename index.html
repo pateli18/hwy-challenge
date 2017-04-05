@@ -14,7 +14,7 @@
     <div class="torque-wrapper">
     	<h2 class="torque-header">
     		<div id="torque-timer">12:00 am EST</div>
-			<div id="torque-time-value"></div>
+			<div id="torque-time-value">$0 per Minute</div>
 			<!--<div id="torque-saved-time"></div>-->
     	</h2>
     	<div class="torque-controls-value">
@@ -143,7 +143,7 @@
           			$( "div#v_slider" ).slider({
   						slide: function( event, ui ) {
   							var value_per_minute = ui.value*.20
-							$("div#torque-saved-value").text('$' + value_per_minute.toLocaleString('en-US', {maximumFractionDigits:2})  + ' per Minute');
+							$("div#torque-time-value").text('$' + value_per_minute.toLocaleString('en-US', {maximumFractionDigits:2})  + ' per Minute');
   						}
 					});
 
