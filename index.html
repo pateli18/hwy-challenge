@@ -110,13 +110,12 @@
 		  		}
 
 		  	var static_uber_layer = {
+		  		user_name: 'pateli18'
 			    type: 'cartodb',
-					options: {
-						user_name: 'pateli18',
-						table_name: 'hubway_trips_uber_20160809',
+					sublayers: [{
 						cartocss: static_CARTOCSS,
 						sql: 'SELECT (uber_value_delta_raw + uber_duration_delta_raw*(.20 - 2)) AS uber_value, hubway_trips_uber_20160809.* FROM hubway_trips_uber_20160809'
-					}
+					}]
 		  	}
 
 		  	cartodb.createLayer(static_uber_map, static_uber_layer)
