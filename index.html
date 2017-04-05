@@ -95,9 +95,11 @@
 				'  marker-allow-overlap: true;',
 				'  marker-fill: #ff0000;',
 				'}',
+				/*
 				'#layer[uber_value > 0] {',
 				'  marker-fill: #44a93d;',
 				'}',
+				*/
 
 			].join('\n');
 
@@ -114,7 +116,8 @@
 		  		user_name: 'pateli18',
 			    type: 'cartodb',
 					sublayers: [{
-						sql: 'SELECT (uber_value_delta_raw + uber_duration_delta_raw*(.20 - 2)) AS uber_value, hubway_trips_uber_20160809.* FROM hubway_trips_uber_20160809',
+						sql: 'SELECT * FROM hubway_trips_uber_20160809',
+						/*sql: 'SELECT (uber_value_delta_raw + uber_duration_delta_raw*(.20 - 2)) AS uber_value, hubway_trips_uber_20160809.* FROM hubway_trips_uber_20160809',*/
 						cartocss: static_CARTOCSS,	
 					}]
 		  		}
