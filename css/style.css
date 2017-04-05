@@ -32,11 +32,12 @@
 
 .torque-controls-value {
     position: absolute;
-    bottom: 50px;
+    bottom: 55px;
     right: 0;
     padding: 8px 12px;
     background-color: rgba(112,112,112,0.5);
     z-index: 4;
+    width: 200px;
 }
 
 .torque-controls-time {
