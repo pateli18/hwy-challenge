@@ -65,11 +65,13 @@
 }
 
 .torque-v_slider {
-    width: 199px;
-    float: right;
+    height: 150px;
+    align-self: right;
     margin-left: 18px;
     top: 3px;
-    z-index: 4;
+    z-index: 4; 
+    position:relative;
+    right:10px;
 }
 
 .ui-slider {
