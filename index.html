@@ -69,7 +69,7 @@
 			var torque_CARTOCSS = [
 				'Map {',
 				'-torque-time-attribute: "timestamp";',
-				'-torque-aggregation-function: "round(avg(uber_value))";',
+				'-torque-aggregation-function: "sum(distinct(uber_value))";',
 				'-torque-frame-count: 1021;',
 				'-torque-animation-duration: 60;',
 				'-torque-resolution: 1;',
