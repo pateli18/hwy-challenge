@@ -93,10 +93,11 @@
 
 			var static_CARTOCSS = [
 				'#hubway_trips_uber_20160809 {',
-				'  marker-width: 5;',
-				'  marker-fill-opacity: 1;',
+				'  marker-width: 1;',
+				'  marker-fill-opacity: .5;',
 				'  marker-allow-overlap: true;',
-				'  marker-fill: #44a93d;',
+				'  marker-fill: #ff0000;',
+				'  marker-line-width: 0;',
 				'}',
 				'#layer[uber_value > 0] {',
 				'  marker-fill: #44a93d;',
@@ -115,7 +116,7 @@
 		  		}
 			
 			*/
-			
+
 		  	var static_uber_layer = {
 		  		user_name: 'pateli18',
 			    type: 'cartodb',
@@ -129,8 +130,6 @@
 		  	cartodb.createLayer(static_uber_map, static_uber_layer)
 		  		.addTo(static_uber_map)
 		  		.done(function(layer) {
-		  			var subl = layer.getSubLayer(0)
-		  			console.log(subl.isVisible());
 		  		});
 
 		  	/*
