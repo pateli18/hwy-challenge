@@ -17,7 +17,9 @@
 			<div id="torque-saved-value"></div>
 			<!--<div id="torque-saved-time"></div>-->
     	</h2>
-    	<div class="value-slider" id="v_slider"></div>
+    	<div class="torque-controls">
+      		<div class="torque-slider" id="v_slider">
+      	</div>
     	<div class="torque-controls">
       		<div class="torque-pause" id="pause_button"></div>
       		<div class="torque-slider" id="slider">
@@ -90,7 +92,6 @@
 		    		step:1,
 		    		max:50,
 		    		min:0,
-		    		orientation: "vertical"
 				});
 		  });
 
@@ -174,6 +175,12 @@
 							}
 							*/
 						}
+					});
+
+          			$( "div#v_slider" ).slider({
+  						slide: function( event, ui ) {
+							$("div#torque-saved-value").text($ + (ui.value*.20).toLocaleString('en-US', {maximumFractionDigits:2}) + ' per Minute');
+  						}
 					});
 
           			$( "div#v_slider" ).slider({
