@@ -60,7 +60,7 @@
 		    L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z}/{x}/{y}.png', {
 		    }).addTo(map);
 
-		    var static_uber_map = L.map('static_uber_map',{ center: [42.362690, -71.081154], zoom: 11});
+		    var static_uber_map = L.map('static_uber_map',{ center: [42.362690, -71.081154], zoom: 12});
 
 		    L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z}/{x}/{y}.png', {
 		    }).addTo(static_uber_map);
@@ -127,6 +127,7 @@
 		  		.done(function(layer) {
 		  		});
 
+		  	/*
 		  	cartodb.createLayer(map, layerSource, {time_slider:false})
 				.addTo(map)
 				.done(function(layer) {
@@ -160,7 +161,7 @@
 									saved_time = data['rows'][0]['saved_time'] / 3600.0;
 									$("div#torque-saved-time").text(saved_time.toLocaleString('en-US', {maximumFractionDigits:0}) + " Additional Hours");
 								});
-								*/
+								
 							}
 						}
 					});
@@ -195,6 +196,7 @@
 				.error(function(err) {
 				console.log("Error: " + err);
 				});
+				*/
 			}
 		window.onload = main;
     </script>
