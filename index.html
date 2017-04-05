@@ -64,7 +64,7 @@
 		    L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z}/{x}/{y}.png', {
 		    }).addTo(static_uber_map);
 
-			var torque_CARTOCSS = L.map('static_uber_map',{ center: [42.362690, -71.081154], zoom: 12});
+			var torque_CARTOCSS = [
 				'Map {',
 				'-torque-time-attribute: "timestamp";',
 				'-torque-aggregation-function: "avg(uber_value_delta_raw)";',
