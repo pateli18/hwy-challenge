@@ -32,14 +32,14 @@
 
 .torque-controls-value {
     position: absolute;
-    bottom: 100px;
+    bottom: 50px;
     right: 0;
     padding: 8px 12px;
     background-color: rgba(112,112,112,0.5);
     z-index: 4;
 }
 
-.torque-controls-timer {
+.torque-controls-time {
     position: absolute;
     bottom: 16px;
     right: 0;
@@ -66,7 +66,14 @@
     background-image: url(../img/play.png);
 }
 
-.torque-slider {
+.torque-slider-value {
+    height: 150px;
+    float: right;
+    margin-left: 18px;
+    top: 3px;
+}
+
+.torque-slider-time {
     width: 199px;
     float: right;
     margin-left: 18px;
