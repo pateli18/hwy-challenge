@@ -61,6 +61,7 @@
 		    }).addTo(map);
 
 		    var static_uber_map = L.map('static_uber_map',{ center: [42.362690, -71.081154], zoom: 12});
+
 		    L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z}/{x}/{y}.png', {
 		    }).addTo(static_uber_map);
 
@@ -113,19 +114,15 @@
 		  		user_name: 'pateli18',
 			    type: 'cartodb',
 					sublayers: [{
-						cartocss: static_CARTOCSS,
 						sql: 'SELECT (uber_value_delta_raw + uber_duration_delta_raw*(.20 - 2)) AS uber_value, hubway_trips_uber_20160809.* FROM hubway_trips_uber_20160809',
-					},
-				]
-		  	}
+						cartocss: static_CARTOCSS,	
+					}]
+		  		}
 
 		  	cartodb.createLayer(static_uber_map, static_uber_layer)
 		  		.addTo(static_uber_map)
 		  		.done(function(layer) {
-		  		})
-		  		.error(function(err) {
-				console.log("Error: " + err);
-				});
+		  		});
 
 		  	cartodb.createLayer(map, layerSource, {time_slider:false})
 				.addTo(map)
