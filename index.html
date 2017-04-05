@@ -56,12 +56,13 @@
 		  });
 
     	function main() {
+		    /*
 		    // Create Leaflet map object
 		    var map = L.map('map',{ center: [42.362690, -71.081154], zoom: 12});
 		    // Add Tile Layer basemap
 		    L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z}/{x}/{y}.png', {
 		    }).addTo(map);
-
+			*/
 		    var static_uber_map = L.map('static_uber_map',{ center: [42.362690, -71.081154], zoom: 12});
 
 		    L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z}/{x}/{y}.png', {
@@ -103,6 +104,7 @@
 
 			].join('\n');
 
+			/*
 			var layerSource = {
 			    type: 'torque',
 					options: {
@@ -111,7 +113,9 @@
 						cartocss: torque_CARTOCSS
 					}
 		  		}
-
+			
+			*/
+			
 		  	var static_uber_layer = {
 		  		user_name: 'pateli18',
 			    type: 'cartodb',
