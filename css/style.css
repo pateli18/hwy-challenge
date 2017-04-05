@@ -64,6 +64,14 @@
     top: 3px;
 }
 
+.torque-v_slider {
+    width: 199px;
+    float: right;
+    margin-left: 18px;
+    top: 3px;
+    z-index: 4;
+}
+
 .ui-slider {
     position: relative;
     text-align: left;
