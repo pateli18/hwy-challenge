@@ -95,11 +95,9 @@
 				'  marker-allow-overlap: true;',
 				'  marker-fill: #44a93d;',
 				'}',
-				/*
 				'#layer[uber_value > 0] {',
 				'  marker-fill: #44a93d;',
 				'}',
-				*/
 
 			].join('\n');
 
@@ -118,14 +116,15 @@
 					sublayers: [{
 						sql: 'SELECT * FROM hubway_trips_uber_20160809',
 						/*sql: 'SELECT (uber_value_delta_raw + uber_duration_delta_raw*(.20 - 2)) AS uber_value, hubway_trips_uber_20160809.* FROM hubway_trips_uber_20160809',*/
-						cartocss: "#hubway_trips_uber_20160809{marker-fill:#44a93d;marker-width:5;}"	
+						cartocss: static_CARTOCSS	
 					}]
 		  		}
 
 		  	cartodb.createLayer(static_uber_map, static_uber_layer)
 		  		.addTo(static_uber_map)
 		  		.done(function(layer) {
-		  			console.log("Map successfully created.");
+		  			var subl = layer.getSubLayer(0)
+		  			console.log(subl.isVisible());
 		  		});
 
 		  	/*
