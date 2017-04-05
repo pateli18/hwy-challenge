@@ -66,14 +66,7 @@
     background-image: url(../img/play.png);
 }
 
-.torque-slider-value {
-    width: : 150px;
-    float: right;
-    margin-left: 18px;
-    top: 3px;
-}
-
-.torque-slider-time {
+.torque-slider {
     width: 199px;
     float: right;
     margin-left: 18px;
