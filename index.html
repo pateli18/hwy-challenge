@@ -22,6 +22,19 @@
       	</div>
       	<div id="map"></div>
     </div>
+    <div class="torque-wrapper">
+    	<h2 class="torque-header">
+    		<div id="torque-timer">12:00 am EST</div>
+			<div id="torque-saved-value"></div>
+			<!--<div id="torque-saved-time"></div>-->
+    	</h2>
+    	<div class="torque-controls">
+      		<div class="torque-pause" id="pause_button"></div>
+      		<div class="torque-slider" id="slider">
+      		</div>
+      	</div>
+      	<div id="static_uber_map"></div>
+    </div>
 
     <!-- include cartodb.js library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
@@ -47,7 +60,11 @@
 		    L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z}/{x}/{y}.png', {
 		    }).addTo(map);
 
-			var CARTOCSS = [
+		    var static_uber_map = L.map('map',{ center: [42.362690, -71.081154], zoom: 12});
+		    L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z}/{x}/{y}.png', {
+		    }).addTo(static_uber_map);
+
+			var torque_CARTOCSS = L.map('static_uber_map',{ center: [42.362690, -71.081154], zoom: 12});
 				'Map {',
 				'-torque-time-attribute: "timestamp";',
 				'-torque-aggregation-function: "avg(uber_value_delta_raw)";',
@@ -70,14 +87,45 @@
 
 			].join('\n');
 
+			var static_CARTOCSS = [
+				'#layer {',
+				'  marker-width: 1;',
+				'  marker-fill-opacity: 0.5;',
+				'  marker-allow-overlap: true;',
+				'  marker-fill: #ff0000;',
+				'}',
+				'#layer[uber_value > 0] {',
+				'  marker-fill: #44a93d;',
+				'}',
+
+			].join('\n');
+
 			var layerSource = {
 			    type: 'torque',
 					options: {
 						user_name: 'pateli18',
 						table_name: 'hubway_trips_uber_20160809',
-						cartocss: CARTOCSS
+						cartocss: torque_CARTOCSS
 					}
 		  		}
+
+		  	var static_uber_layer = {
+			    type: 'cartodb',
+					options: {
+						user_name: 'pateli18',
+						table_name: 'hubway_trips_uber_20160809',
+						cartocss: static_CARTOCSS,
+						sql: 'SELECT (uber_value_delta_raw + uber_duration_delta_raw*(.20 - 2)) AS uber_value, hubway_trips_uber_20160809.* FROM hubway_trips_uber_20160809'
+					}
+		  	}
+
+		  	cartodb.createLayer(static_uber_map, static_uber_layer)
+		  		.addTo(static_uber_map)
+		  		.done(function(layer) {
+		  		})
+		  		.error(function(err) {
+				console.log("Error: " + err);
+				});
 
 		  	cartodb.createLayer(map, layerSource, {time_slider:false})
 				.addTo(map)
