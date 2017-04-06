@@ -5,6 +5,7 @@ body {
 .page-head {
   background-image: url(../img/header.jpg);
   background-size: contain;
+  background-repeat: no-repeat;
   width: 100%;
   height: 200px;
 }
@@ -13,9 +14,30 @@ body {
   color: white;
   position: absolute;
   right: 40px;
-  top: 50px;
+  top: 15px;
+  font-size: 4em;
+  font-family:Menlo,Monaco,"Andale Mono","lucida console","Courier New",DotumChe,monospace;
+}
+
+.analysis-section {
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-top: 40px;
+  margin-bottom: 40px
+}
+
+.section-title {
   font-size: 1.2em;
   font-family:Menlo,Monaco,"Andale Mono","lucida console","Courier New",DotumChe,monospace;
+  text-align: left;  
+  margin-top: 20px;
+}
+
+.chart-title {
+  font-size: 1.0em;
+  font-family:Menlo,Monaco,"Andale Mono","lucida console","Courier New",DotumChe,monospace;
+  text-align: left;
+  margin-top: 10px;  
 }
 
 .torque-wrapper {
