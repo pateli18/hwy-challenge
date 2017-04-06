@@ -174,9 +174,11 @@
 		  });		  
 
     	function main() {
-		
+			var map_lat = 42.38
+			var map_lng = -71.9
+
 		// uber_linear_map object
-		    var uber_linear_map = L.map('uber_linear_map',{ center: [42.362690, -71.081154], zoom: 12});
+		    var uber_linear_map = L.map('uber_linear_map',{ center: [map_lat, map_lng], zoom: 12});
 		    
 		    L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z}/{x}/{y}.png', {
 		    }).addTo(uber_linear_map);
@@ -301,7 +303,7 @@
 				});
 
 		// uber_cumulative_map object
-		    var uber_cumulative_map = L.map('uber_cumulative_map',{ center: [42.362690, -71.081154], zoom: 12});
+		    var uber_cumulative_map = L.map('uber_cumulative_map',{ center: [map_lat, map_lng], zoom: 12});
 		    
 		    L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z}/{x}/{y}.png', {
 		    }).addTo(uber_cumulative_map);
@@ -426,7 +428,7 @@
 				});
 
 // transit_linear_map object
-		    var transit_linear_map = L.map('transit_linear_map',{ center: [42.362690, -71.081154], zoom: 12});
+		    var transit_linear_map = L.map('transit_linear_map',{ center: [map_lat, map_lng], zoom: 12});
 		    
 		    L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z}/{x}/{y}.png', {
 		    }).addTo(transit_linear_map);
@@ -551,7 +553,7 @@
 				});
 
 		// transit_cumulative_map object
-		    var transit_cumulative_map = L.map('transit_cumulative_map',{ center: [42.362690, -71.081154], zoom: 12});
+		    var transit_cumulative_map = L.map('transit_cumulative_map',{ center: [map_lat, map_lng], zoom: 12});
 		    
 		    L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z}/{x}/{y}.png', {
 		    }).addTo(transit_cumulative_map);
