@@ -152,7 +152,7 @@
 
 	          				if(minutes_raw % 10 == 0) {
 		          				var minute_in_day = hours_raw * 60 + minutes_raw;
-		          				var minute_value = $( "div#v_slider" ).slider( "value" ) * .20
+		          				var minute_value = $( "div#uber_linear_v_slider" ).slider( "value" ) * .20
 								uber_cost_sql_statement ='SELECT SUM(saved_value_all) AS saved_value FROM (SELECT AVG(uber_value) AS saved_value_all FROM (SELECT (uber_cost - uber_duration_delta *' + minute_value + ') AS uber_value, trip,minute_in_day FROM hubway_trips_20160809 WHERE minute_in_day <= ' + minute_in_day + ') AS uber_value_table GROUP BY trip) AS uber_value_table_avg';
 								$.getJSON('https://pateli18.carto.com/api/v2/sql/?q='+uber_cost_sql_statement, function(data) {
 									saved_value = data['rows'][0]['saved_value'];
@@ -172,7 +172,7 @@
           			$( "div#uber_linear_v_slider" ).slider({
   						slide: function( event, ui ) {
   							var value_per_minute = ui.value*.20
-							$("div#torque-time-value").text('$' + value_per_minute.toLocaleString('en-US', {maximumFractionDigits:2, minimumFractionDigits:2})  + ' per Minute');
+							$("div#torque-time-value-uber-linear").text('$' + value_per_minute.toLocaleString('en-US', {maximumFractionDigits:2, minimumFractionDigits:2})  + ' per Minute');
   						}
 					});
 
@@ -188,8 +188,8 @@
 					$( "div#uber_linear_slider" ).slider({
   						start: function( event, ui ) {
   							layer.pause();
-  							$("#pause_button").removeClass("torque-pause");
-  							$("#pause_button").addClass("torque-pause play");
+  							$("#uber_linear_pause_button").removeClass("torque-pause");
+  							$("#uber_linear_pause_button").addClass("torque-pause play");
   						}
 					});
 
@@ -277,7 +277,7 @@
 
 	          				if(minutes_raw % 10 == 0) {
 		          				var minute_in_day = hours_raw * 60 + minutes_raw;
-		          				var minute_value = $( "div#v_slider" ).slider( "value" ) * .20
+		          				var minute_value = $( "div#uber_cumulative_v_slider" ).slider( "value" ) * .20
 								uber_cost_sql_statement ='SELECT SUM(saved_value_all) AS saved_value FROM (SELECT AVG(uber_value) AS saved_value_all FROM (SELECT (uber_cost - uber_duration_delta *' + minute_value + ') AS uber_value, trip,minute_in_day FROM hubway_trips_20160809 WHERE minute_in_day <= ' + minute_in_day + ') AS uber_value_table GROUP BY trip) AS uber_value_table_avg';
 								$.getJSON('https://pateli18.carto.com/api/v2/sql/?q='+uber_cost_sql_statement, function(data) {
 									saved_value = data['rows'][0]['saved_value'];
@@ -297,7 +297,7 @@
           			$( "div#uber_cumulative_v_slider" ).slider({
   						slide: function( event, ui ) {
   							var value_per_minute = ui.value*.20
-							$("div#torque-time-value").text('$' + value_per_minute.toLocaleString('en-US', {maximumFractionDigits:2, minimumFractionDigits:2})  + ' per Minute');
+							$("div#torque-time-value-uber-cumulative").text('$' + value_per_minute.toLocaleString('en-US', {maximumFractionDigits:2, minimumFractionDigits:2})  + ' per Minute');
   						}
 					});
 
@@ -313,8 +313,8 @@
 					$( "div#uber_cumulative_slider" ).slider({
   						start: function( event, ui ) {
   							layer.pause();
-  							$("#pause_button").removeClass("torque-pause");
-  							$("#pause_button").addClass("torque-pause play");
+  							$("#uber_cumulative_pause_button").removeClass("torque-pause");
+  							$("#uber_cumulative_pause_button").addClass("torque-pause play");
   						}
 					});
 
