@@ -13,16 +13,16 @@
   	<!--uber linear map-->
     <div class="torque-wrapper">
     	<h2 class="torque-header">
-    		<div id="torque-timer">12:00 am EST</div>
-			<div id="torque-time-value">$0 per Minute</div>
+    		<div id="torque-time-uber-linear" class="torque-timer">12:00 am EST</div>
+			<div id="torque-time-value-uber-linear" class="torque-time-value">$0 per Minute</div>
 			<div id="torque-saved-value-uber-linear" class="torque-saved-value">$0 Saved</div>
     	</h2>
     	<div class="torque-controls-value">
-      		<div class="torque-slider" id="v_slider"></div>
+      		<div class="torque-slider" id="uber_linear_v_slider"></div>
       	</div>
     	<div class="torque-controls-time">
-      		<div class="torque-pause" id="pause_button"></div>
-      		<div class="torque-slider" id="slider"></div>
+      		<div class="torque-pause" id="uber_linear_pause_button"></div>
+      		<div class="torque-slider" id="uber_linear_slider"></div>
       	</div>
       	<div id="uber_linear_map" class="maps"></div>
     </div>
@@ -30,16 +30,16 @@
     <!--uber cumulative map-->
     <div class="torque-wrapper">
     	<h2 class="torque-header">
-    		<div id="torque-timer">12:00 am EST</div>
-			<div id="torque-time-value">$0 per Minute</div>
+    		<div id="torque-time-uber-cumulative" class="torque-timer">12:00 am EST</div>
+			<div id="torque-time-value-uber-cumulative" class="torque-time-value">$0 per Minute</div>
 			<div id="torque-saved-value-uber-cumulative" class="torque-saved-value">$0 Saved</div>
     	</h2>
     	<div class="torque-controls-value">
-      		<div class="torque-slider" id="v_slider"></div>
+      		<div class="torque-slider" id="uber_cumulative_v_slider"></div>
       	</div>
     	<div class="torque-controls-time">
-      		<div class="torque-pause" id="pause_button"></div>
-      		<div class="torque-slider" id="slider"></div>
+      		<div class="torque-pause" id="uber_cumulative_pause_button"></div>
+      		<div class="torque-slider" id="uber_cumulative_slider"></div>
       	</div>
       	<div id="uber_cumulative_map" class="maps"></div>
     </div>
@@ -58,7 +58,7 @@
 
 
 		  $(function() {
-		    $("div#slider").slider({
+		    $("div#uber_linear_slider").slider({
 		    		step:1,
 		    		max:1021,
 		    		min:0,
@@ -66,7 +66,23 @@
 		  });
 
 		  $(function() {
-		    $("div#v_slider").slider({
+		    $("div#uber_linear_v_slider").slider({
+		    		step:1,
+		    		max:50,
+		    		min:0,
+				});
+		  });
+
+		  $(function() {
+		    $("div#uber_cumulative_slider").slider({
+		    		step:1,
+		    		max:1021,
+		    		min:0,
+				});
+		  });
+
+		  $(function() {
+		    $("div#uber_cumulative_v_slider").slider({
 		    		step:1,
 		    		max:50,
 		    		min:0,
@@ -81,7 +97,7 @@
 		    L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z}/{x}/{y}.png', {
 		    }).addTo(uber_linear_map);
 
-			var torque_CARTOCSS = [
+			var torque_uber_linear_CARTOCSS = [
 				'Map {',
 				'-torque-time-attribute: "timestamp";',
 				'-torque-aggregation-function: "avg(uber_value)";',
@@ -104,17 +120,17 @@
 
 			].join('\n');
 
-			var torque_uber_layer = {
+			var torque_uber_linear_layer = {
 			    type: 'torque',
 					options: {
 						query: 'SELECT (CASE WHEN (uber_cost - uber_duration_delta* 0) <= 0 THEN 1 ELSE 2 END) AS uber_value, hubway_trips_20160809.* FROM hubway_trips_20160809',
 						user_name: 'pateli18',
 						table_name: 'hubway_trips_uber_20160809',
-						cartocss: torque_CARTOCSS
+						cartocss: torque_uber_linear_CARTOCSS
 					}
 		  		}
 
-		  	cartodb.createLayer(uber_linear_map, torque_uber_layer, {time_slider:false})
+		  	cartodb.createLayer(uber_linear_map, torque_uber_linear_layer, {time_slider:false})
 				.addTo(uber_linear_map)
 				.done(function(layer) {
 					// add timer
@@ -122,7 +138,7 @@
           				datetime = changes["time"];
           				step = changes["step"];
 
-          				$( "div#slider" ).slider( "value", step);
+          				$( "div#uber_linear_slider" ).slider( "value", step);
 
           				if (!isNaN(datetime)) {
 	          				var hours_raw = datetime.getUTCHours();
@@ -132,7 +148,7 @@
 							hours = hours ? hours : 12; // the hour '0' should be '12'
 							var minutes = minutes_raw < 10 ? '0'+minutes_raw : minutes_raw;
 							var strTime = hours + ':' + minutes + ' ' + ampm + " EST";
-	          				$("div#torque-timer").text(strTime);
+	          				$("div#torque-time-uber-linear").text(strTime);
 
 	          				if(minutes_raw % 10 == 0) {
 		          				var minute_in_day = hours_raw * 60 + minutes_raw;
@@ -153,14 +169,14 @@
 						}
 					});
 
-          			$( "div#v_slider" ).slider({
+          			$( "div#uber_linear_v_slider" ).slider({
   						slide: function( event, ui ) {
   							var value_per_minute = ui.value*.20
 							$("div#torque-time-value").text('$' + value_per_minute.toLocaleString('en-US', {maximumFractionDigits:2, minimumFractionDigits:2})  + ' per Minute');
   						}
 					});
 
-          			$( "div#v_slider" ).slider({
+          			$( "div#uber_linear_v_slider" ).slider({
   						stop: function( event, ui ) {
   							var sql_query = 'SELECT (CASE WHEN (uber_cost - uber_duration_delta*' + (ui.value*.20) + ') <= 0 THEN 1 ELSE 2 END) AS uber_value, hubway_trips_20160809.* FROM hubway_trips_20160809'
   							console.log(sql_query)
@@ -169,7 +185,7 @@
 					});
 
 
-					$( "div#slider" ).slider({
+					$( "div#uber_linear_slider" ).slider({
   						start: function( event, ui ) {
   							layer.pause();
   							$("#pause_button").removeClass("torque-pause");
@@ -177,13 +193,13 @@
   						}
 					});
 
-					$( "div#slider" ).slider({
+					$( "div#uber_linear_slider" ).slider({
   						slide: function( event, ui ) {
   							layer.setStep(ui.value);
   						}
 					});
 
-					$("#pause_button").click(function(){
+					$("#uber_linear_pause_button").click(function(){
 						if (layer.isRunning()) {
 							$(this).removeClass("torque-pause");
 							$(this).addClass("torque-pause play");
@@ -247,7 +263,7 @@
           				datetime = changes["time"];
           				step = changes["step"];
 
-          				$( "div#slider" ).slider( "value", step);
+          				$( "div#uber_cumulative_slider" ).slider( "value", step);
 
           				if (!isNaN(datetime)) {
 	          				var hours_raw = datetime.getUTCHours();
@@ -257,7 +273,7 @@
 							hours = hours ? hours : 12; // the hour '0' should be '12'
 							var minutes = minutes_raw < 10 ? '0'+minutes_raw : minutes_raw;
 							var strTime = hours + ':' + minutes + ' ' + ampm + " EST";
-	          				$("div#torque-timer").text(strTime);
+	          				$("div#torque-time-uber-cumulative").text(strTime);
 
 	          				if(minutes_raw % 10 == 0) {
 		          				var minute_in_day = hours_raw * 60 + minutes_raw;
@@ -278,14 +294,14 @@
 						}
 					});
 
-          			$( "div#v_slider" ).slider({
+          			$( "div#uber_cumulative_v_slider" ).slider({
   						slide: function( event, ui ) {
   							var value_per_minute = ui.value*.20
 							$("div#torque-time-value").text('$' + value_per_minute.toLocaleString('en-US', {maximumFractionDigits:2, minimumFractionDigits:2})  + ' per Minute');
   						}
 					});
 
-          			$( "div#v_slider" ).slider({
+          			$( "div#uber_cumulative_v_slider" ).slider({
   						stop: function( event, ui ) {
   							var sql_query = 'SELECT (CASE WHEN (uber_cost - uber_duration_delta*' + (ui.value*.20) + ') <= 0 THEN 1 ELSE 2 END) AS uber_value, hubway_trips_20160809.* FROM hubway_trips_20160809'
   							console.log(sql_query)
@@ -294,7 +310,7 @@
 					});
 
 
-					$( "div#slider" ).slider({
+					$( "div#uber_cumulative_slider" ).slider({
   						start: function( event, ui ) {
   							layer.pause();
   							$("#pause_button").removeClass("torque-pause");
@@ -302,13 +318,13 @@
   						}
 					});
 
-					$( "div#slider" ).slider({
+					$( "div#uber_cumulative_slider" ).slider({
   						slide: function( event, ui ) {
   							layer.setStep(ui.value);
   						}
 					});
 
-					$("#pause_button").click(function(){
+					$("#uber_cumulative_pause_button").click(function(){
 						if (layer.isRunning()) {
 							$(this).removeClass("torque-pause");
 							$(this).addClass("torque-pause play");
@@ -324,7 +340,6 @@
 				.error(function(err) {
 				console.log("Error: " + err);
 				});
-
 
 			}
 		window.onload = main;
