@@ -69,7 +69,7 @@
 			var torque_CARTOCSS = [
 				'Map {',
 				'-torque-time-attribute: "timestamp";',
-				'-torque-aggregation-function: "sum(distinct(uber_value))";',
+				'-torque-aggregation-function: "avg(uber_value)";',
 				'-torque-frame-count: 1021;',
 				'-torque-animation-duration: 60;',
 				'-torque-resolution: 1;',
@@ -79,12 +79,11 @@
 				'  marker-width: 1;',
 				'  marker-fill-opacity: 0.5;',
 				'  comp-op: "lighter";',
+				'}',
+				'#layer[value <= 1.5] {',
 				'  marker-fill: #ff0000;',
 				'}',
-				'#layer[value = 1] {',
-				'  marker-fill: #ff0000;',
-				'}',
-				'#layer[value = 2] {',
+				'#layer[value > 1.5] {',
 				'  marker-fill: #44a93d;',
 				'}',
 
@@ -93,7 +92,7 @@
 			var torque_uber_layer = {
 			    type: 'torque',
 					options: {
-						query: 'SELECT (CASE WHEN (uber_cost + uber_duration_delta* 0) <= 0 THEN 1 ELSE 2 END) AS uber_value, hubway_trips_20160809.* FROM hubway_trips_20160809',
+						query: 'SELECT (CASE WHEN (uber_cost - uber_duration_delta* 0) <= 0 THEN 1 ELSE 2 END) AS uber_value, hubway_trips_20160809.* FROM hubway_trips_20160809',
 						user_name: 'pateli18',
 						table_name: 'hubway_trips_uber_20160809',
 						cartocss: torque_CARTOCSS
@@ -150,7 +149,7 @@
 
           			$( "div#v_slider" ).slider({
   						stop: function( event, ui ) {
-  							var sql_query = 'SELECT (CASE WHEN (uber_cost + uber_duration_delta*' + (ui.value*.20) + ') <= 0 THEN 1 ELSE 2 END) AS uber_value, hubway_trips_20160809.* FROM hubway_trips_20160809'
+  							var sql_query = 'SELECT (CASE WHEN (uber_cost - uber_duration_delta*' + (ui.value*.20) + ') <= 0 THEN 1 ELSE 2 END) AS uber_value, hubway_trips_20160809.* FROM hubway_trips_20160809'
   							console.log(sql_query)
   							layer.setSQL(sql_query);
   						}
