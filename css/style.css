@@ -14,37 +14,42 @@ body {
   color: white;
   position: absolute;
   right: 40px;
-  top: 15px;
   font-size: 4em;
-  font-family:Menlo,Monaco,"Andale Mono","lucida console","Courier New",DotumChe,monospace;
+  font-family:medium-content-sans-serif-font,"Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Arial,sans-serif;
 }
 
 .analysis-section {
-  margin-left: 40px;
-  margin-right: 40px;
-  margin-top: 40px;
-  margin-bottom: 40px
+  margin-left: auto;
+  margin-right: auto;
+  width: 750px;
+}
+
+.analysis-paragraph {
+  font-size: .6px
+  font: medium-content-serif-font,Georgia,Cambria,"Times New Roman",Times,serif;
+  margin-bottom: 10px;
 }
 
 .section-title {
-  font-size: 1.2em;
-  font-family:Menlo,Monaco,"Andale Mono","lucida console","Courier New",DotumChe,monospace;
+  font-size: 2em;
+  font-family:medium-content-sans-serif-font,"Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Arial,sans-serif;
   text-align: left;  
   margin-top: 20px;
 }
 
 .chart-title {
-  font-size: 1.0em;
-  font-family:Menlo,Monaco,"Andale Mono","lucida console","Courier New",DotumChe,monospace;
+  font-size: 1.2em;
+  font-family:medium-content-sans-serif-font,"Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Arial,sans-serif;
   text-align: left;
-  margin-top: 10px;  
+  margin-top: 10px;
+  margin-bottom: 0px;
+  color: #696969;
 }
 
 .torque-wrapper {
   width: 750px;
   height: 375px;
   position: relative;
-  margin-top: 20px;
 }
 
 .torque-header {
