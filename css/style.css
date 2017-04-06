@@ -1,3 +1,10 @@
+.head_bar {
+  background-image: url(../img/header.jpg);
+  color: white;
+  text-align: right;
+  padding-right: 30px;
+}
+
 
 .torque-wrapper {
   width: 750px;
