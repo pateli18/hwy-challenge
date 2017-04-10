@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
+  	<meta charset="utf-8">
+  	<meta name="description" content="Analysis of the value of Hubway vs. Uber">
+	<meta name="keywords" content="Hubway, Uber, Bike, Share">
+	<meta name="author" content="Ihsaan Patel">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css">
@@ -8,6 +12,8 @@
     <link rel="stylesheet" href="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/themes/css/cartodb.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="http://libs.cartodb.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+    <link rel="icon" href="../img/bike.png">
+    <title>THE VALUE OF HUBWAY</title>
   </head>
   <body>
 
@@ -46,11 +52,13 @@
   		</div>
   	</div>
 
-
+  	<!--Torque Visualizations-->
   	<div class="analysis-section">
-  		<h1 class="section-title">Hubway vs. Uber</h1>
+  		<h1 class="section-title">Visualizing Hubway vs. Uber</h1>
   		<!--uber linear map-->
-  		<p class="analysis-paragraph"> Over the past three years, I’ve read more than 200 non-fiction books. I’ve dived into Philosophy, Marketing, Productivity, Evolution, History, Biographies, and many other books you read to learn something.</p>
+  		<p class="analysis-paragraph"> We wanted to visualize the actual routes and their value deltas over time, so we created the animated maps for Hubway trips taken on Tuesday, August 9, 2016, the busiest day of the year for Hubway in 2016 in terms of trips taken. Routing and trip time information was taken for bicycling from the Google Maps API. Driving trip times were also taken from the Google Maps API to account for traffic at different times of the day (the Uber API does not allow you to request trip times for a specific time of day).</p>
+  		<p class="analysis-paragraph"> You can specify the cost per minute to use by sliding the bar, with white routes indicating superior Hubway value and blue routes indicating superior Uber value. As the cost per minute increases, you should see more blue routes.</p>
+  		<p class="analysis-paragraph"> <b>Note:</b> If you do not see anything on the maps, please be sure to enable scripts on your browser (Chrome should display a little icon with a red "x" on the faar right of the address bar.</p>
   		<h2 class="chart-title">Hubway Trips - August 9, 2016 | Uber Value Differential</h2>
 	    <div class="torque-wrapper">
 	    	<h2 class="torque-header">
@@ -67,9 +75,9 @@
 	      	</div>
 	      	<div id="uber_linear_map" class="maps" style="background:#0E0E0E"></div>
 	    </div>
-	    <p class="analysis-paragraph"> Over the past three years, I’ve read more than 200 non-fiction books. I’ve dived into Philosophy, Marketing, Productivity, Evolution, History, Biographies, and many other books you read to learn something.</p>
 
     <!--uber cumulative map-->
+    	<p class="analysis-paragraph"> The following map displays the same routes as the previous one, but aggregates the routes over time, giivng a complete picture of all routes taken for that point in time.</p>
     	<h2 class="chart-title">Cumulative Hubway Trips - August 9, 2016 | Uber Value Differential</h2>
 	    <div class="torque-wrapper">
 	    	<h2 class="torque-header">
@@ -89,8 +97,8 @@
 	</div>
 
   	<div class="analysis-section">
-  		<h1 class="section-title">Hubway vs. Transit</h1>
-  		<p class="analysis-paragraph"> Over the past three years, I’ve read more than 200 non-fiction books. I’ve dived into Philosophy, Marketing, Productivity, Evolution, History, Biographies, and many other books you read to learn something.</p>
+  		<h1 class="section-title">Visualizing Hubway vs. Transit</h1>
+  		<p class="analysis-paragraph"> We also compared Hubway trips to transit trips, assuming a cost of $2.25 for each transit trip and getting trip time from Google Maps API. Hubway is generally faster than transit (at least from Hubway station to Hubway station), so cost per minute increases actually increases Hubway's value relative to transit.</p>
   		<h2 class="chart-title">Hubway Trips - August 9, 2016 | Transit Value Differential</h2>
 		    <!--transit linear map-->
 		    <div class="torque-wrapper">
@@ -127,6 +135,16 @@
 	      	<div id="transit_cumulative_map" class="maps" style="background:#0E0E0E"></div>
 	    	</div>
    </div>
+
+   <div class="analysis-section">
+   		<h1 class="section-title">Resources</h1>
+   		<p class="analysis-paragraph"><a href = "https://carto.com/torque/">CartoDB's Torque functionality</a> was used to produce the animated maps. Todd Schneider's <a href="http://toddwschneider.com/posts/a-tale-of-twenty-two-million-citi-bikes-analyzing-the-nyc-bike-share-system/">analysis of Citi Bike in New York City</a> provided the initial inspiration for our analysis. All code is available on <a href = "https://github.com/pateli18/hwy-challenge">GitHub</a>.</p>
+   </div>
+
+
+
+
+
 <!-- JAVASCRIPT -->
 
     <!-- include cartodb.js library -->
