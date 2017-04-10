@@ -58,7 +58,7 @@
   		<!--uber linear map-->
   		<p class="analysis-paragraph"> We wanted to visualize the actual routes and their value deltas over time, so we created the animated maps for Hubway trips taken on Tuesday, August 9, 2016, the busiest day of the year for Hubway in 2016 in terms of trips taken. Routing and trip time information was taken for bicycling from the Google Maps API. Driving trip times were also taken from the Google Maps API to account for traffic at different times of the day (the Uber API does not allow you to request trip times for a specific time of day).</p>
   		<p class="analysis-paragraph"> You can specify the cost per minute to use by sliding the bar, with white routes indicating superior Hubway value and blue routes indicating superior Uber value. As the cost per minute increases, you should see more blue routes.</p>
-  		<p class="analysis-paragraph"> <b>Note:</b> If you do not see anything on the maps, please be sure to enable scripts on your browser (Chrome should display a little icon with a red "x" on the faar right of the address bar.</p>
+  		<p class="analysis-paragraph"> <b>Note:</b> If you do not see anything on the maps, please be sure to enable scripts on your browser (Chrome should display a little icon with a red "x" on the far right of the address bar.</p>
   		<h2 class="chart-title">Hubway Trips - August 9, 2016 | Uber Value Differential</h2>
 	    <div class="torque-wrapper">
 	    	<h2 class="torque-header">
@@ -66,9 +66,11 @@
 				<div id="torque-time-value-uber-linear" class="torque-time-value">$0 per Minute</div>
 				<div id="torque-saved-value-uber-linear" class="torque-saved-value">$0 Saved</div>
 	    	</h2>
+	    	<div class="torque-value-slider-label">Cost per Minute Slider</div>
 	    	<div class="torque-controls-value">
 	      		<div class="torque-slider" id="uber_linear_v_slider"></div>
 	      	</div>
+	      	<div class="torque-time-slider-label">Time Slider</div>
 	    	<div class="torque-controls-time">
 	      		<div class="torque-pause" id="uber_linear_pause_button"></div>
 	      		<div class="torque-slider" id="uber_linear_slider"></div>
