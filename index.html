@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/themes/css/cartodb.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="http://libs.cartodb.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
-    <link rel="icon" href="../img/bike.png">
+    <link rel="icon" src="../img/bike.png">
     <title>THE VALUE OF HUBWAY</title>
   </head>
   <body>
@@ -373,7 +373,7 @@
 				'-torque-time-attribute: "timestamp";',
 				'-torque-aggregation-function: "avg(uber_value)";',
 				'-torque-frame-count: 1021;',
-				'-torque-animation-duration: 60;',
+				'-torque-animation-duration: 10;',
 				'-torque-resolution: 1;',
 				'-torque-data-aggregation: "cumulative";',
 				'}',
@@ -421,7 +421,7 @@
 							var strTime = hours + ':' + minutes + ' ' + ampm + " EST";
 	          				$("div#torque-time-uber-cumulative").text(strTime);
 
-	          				if(minutes_raw % 10 == 0) {
+	          				if(minutes_raw % 60 == 0) {
 		          				var minute_in_day = hours_raw * 60 + minutes_raw;
 		          				var minute_value = $( "div#uber_cumulative_v_slider" ).slider( "value" ) * .20
 								uber_cost_sql_statement ='SELECT SUM(saved_value_all) AS saved_value FROM (SELECT AVG(uber_value) AS saved_value_all FROM (SELECT (uber_cost - uber_duration_delta *' + minute_value + ') AS uber_value, trip,minute_in_day FROM hubway_trips_20160809 WHERE minute_in_day <= ' + minute_in_day + ') AS uber_value_table GROUP BY trip) AS uber_value_table_avg';
