@@ -18,21 +18,23 @@
 
   	<!--Introduction-->
   	<div class="analysis-section">
-  		<p class="analysis-paragraph">One of Hubway's significant advantages over other transportation service providers is the effectively zero marginal cost for every ride. We wanted to compare the value of each Hubway trip to a similar Uber trip and identify the aareas where Hubway users generate the most value. Using the Uber api and latitude / longitude coordinates for every Hubway station, we were able to pull uber cost and duration data between each start and end station pair (referred to as a route) in 2016.</p>
+  		<p class="analysis-paragraph">One of Hubway's significant advantages over other transportation service providers is the effectively zero marginal cost for every ride. We wanted to compare the value of each Hubway trip to a similar Uber trip and identify the areas where Hubway users generate the most value. Using the Uber apI and latitude / longitude coordinates for every Hubway station, we were able to pull uber cost and trip time data between each start and end station pair (referred to as a route) in 2016. Specifically, we used the Uber X "High Estimate" for cost and Uber X "Duration" fortrip time. For Hubway's trip time, we used the bicycling trip time from the Google Maps API, to be consistent.</p>
   	</div>
 
   	<!--Duration Differences-->
   	<div class="analysis-section">
   		<h1 class="section-title">Uber's Duration Advantage</h1>
-  		<p class="analysis-paragraph">While each Hubway trip is obviously cheaper than an Uber journey on a marginal cost basis, Uber holds the duration advantage for the vast majoity of routes on the system.</p>
-  		<h2 class="chart-title">Hubway vs. Uber Duration Delta - 2016 Routes</h2>
+  		<p class="analysis-paragraph">While each Hubway trip is obviously cheaper than an Uber journey on a marginal cost basis, Uber holds the trip time advantage for the vast majoity of routes on the system.</p>
+  		<h2 class="chart-title">Hubway vs. Uber Trip Time Delta - 2016 Routes</h2>
   		<div class="torque-wrapper">
   			<div class='tableauPlaceholder' id='viz1491831120603' style='position: relative'><noscript><a href='#'><img alt='Dashboard 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;du&#47;durationdeltas&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='site_root' value='' /><param name='name' value='durationdeltas&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;du&#47;durationdeltas&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1491831120603');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='754px';vizElement.style.height='444px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
   		</div>
+  		<p class="analysis-paragraph">Of the 635 routes that are faster for Hubway than Uber, most of the start and end stations are clustered around downtown and Harvard / MIT, though it's interesting that there is not 100% overlap between the 2, indicating there might be some preferable routing for one-way on some routes.</p>
+  		<h2 class="chart-title">Hubway Start / End Stations with Routes Faster than Uber - 2016</h2>
+  		<div class="torque-wrapper">
+			<div class='tableauPlaceholder' id='viz1491833050729' style='position: relative'><noscript><a href='#'><img alt='Dashboard 2 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;st&#47;stations-durationdeltas&#47;Dashboard2&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='site_root' value='' /><param name='name' value='stations-durationdeltas&#47;Dashboard2' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;st&#47;stations-durationdeltas&#47;Dashboard2&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1491833050729');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='1004px';vizElement.style.height='869px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+  		</div>
   	</div>
-
-  	
-
 
   	<div class="analysis-section">
   		<h1 class="section-title">Hubway vs. Uber</h1>
