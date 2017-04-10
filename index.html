@@ -34,7 +34,7 @@
 	      		<div class="torque-pause" id="uber_linear_pause_button"></div>
 	      		<div class="torque-slider" id="uber_linear_slider"></div>
 	      	</div>
-	      	<div id="uber_linear_map" class="maps"></div>
+	      	<div id="uber_linear_map" class="maps" style="background:#242426"></div>
 	    </div>
 	    <p class="analysis-paragraph"> Over the past three years, I’ve read more than 200 non-fiction books. I’ve dived into Philosophy, Marketing, Productivity, Evolution, History, Biographies, and many other books you read to learn something.</p>
 
@@ -53,7 +53,7 @@
 	      		<div class="torque-pause" id="uber_cumulative_pause_button"></div>
 	      		<div class="torque-slider" id="uber_cumulative_slider"></div>
 	      	</div>
-	      	<div id="uber_cumulative_map" class="maps"></div>
+	      	<div id="uber_cumulative_map" class="maps" style="background:#242426"></div>
 	    </div>
 	</div>
 
@@ -75,7 +75,7 @@
 		      		<div class="torque-pause" id="transit_linear_pause_button"></div>
 		      		<div class="torque-slider" id="transit_linear_slider"></div>
 		      	</div>
-		      	<div id="transit_linear_map" class="maps"></div>
+		      	<div id="transit_linear_map" class="maps" style="background:#242426"></div>
 		    </div>
 
     <!--transit cumulative map-->
@@ -93,7 +93,7 @@
 	      		<div class="torque-pause" id="transit_cumulative_pause_button"></div>
 	      		<div class="torque-slider" id="transit_cumulative_slider"></div>
 	      	</div>
-	      	<div id="transit_cumulative_map" class="maps"></div>
+	      	<div id="transit_cumulative_map" class="maps" style="background:#242426"></div>
 	    	</div>
    </div>
 <!-- JAVASCRIPT -->
@@ -102,8 +102,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
     <!--<script src="https://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>-->
     <script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/cartodb.js"></script>
-    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	<script src="http://libs.cartodb.com/cartodb.js/v3/3.15/cartodb.js"></script>
     <script>
 
@@ -171,15 +171,15 @@
 		    		max:50,
 		    		min:0,
 				});
-		  });		  
+		  });
 
     	function main() {
-			var map_lat = 42.358611; 
+			var map_lat = 42.358611;
 			var map_lng = -71.066734;
 
 		// uber_linear_map object
 		    var uber_linear_map = L.map('uber_linear_map',{ center: [map_lat, map_lng], zoom: 12});
-		    
+
 		    L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z}/{x}/{y}.png', {
 		    }).addTo(uber_linear_map);
 
@@ -250,7 +250,7 @@
 										document.getElementById("torque-saved-value-uber-linear").style.color="#44a93d";
 									}
 								});
-								
+
 							}
 						}
 					});
@@ -304,7 +304,7 @@
 
 		// uber_cumulative_map object
 		    var uber_cumulative_map = L.map('uber_cumulative_map',{ center: [map_lat, map_lng], zoom: 12});
-		    
+
 		    L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z}/{x}/{y}.png', {
 		    }).addTo(uber_cumulative_map);
 
@@ -375,7 +375,7 @@
 										document.getElementById("torque-saved-value-uber-cumulative").style.color="#44a93d";
 									}
 								});
-								
+
 							}
 						}
 					});
@@ -429,7 +429,7 @@
 
 // transit_linear_map object
 		    var transit_linear_map = L.map('transit_linear_map',{ center: [map_lat, map_lng], zoom: 12});
-		    
+
 		    L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z}/{x}/{y}.png', {
 		    }).addTo(transit_linear_map);
 
@@ -500,7 +500,7 @@
 										document.getElementById("torque-saved-value-transit-linear").style.color="#44a93d";
 									}
 								});
-								
+
 							}
 						}
 					});
@@ -554,7 +554,7 @@
 
 		// transit_cumulative_map object
 		    var transit_cumulative_map = L.map('transit_cumulative_map',{ center: [map_lat, map_lng], zoom: 12});
-		    
+
 		    L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z}/{x}/{y}.png', {
 		    }).addTo(transit_cumulative_map);
 
@@ -625,7 +625,7 @@
 										document.getElementById("torque-saved-value-transit-cumulative").style.color="#44a93d";
 									}
 								});
-								
+
 							}
 						}
 					});
