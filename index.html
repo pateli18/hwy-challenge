@@ -74,7 +74,7 @@
 	    </div>
 
     <!--uber cumulative map-->
-    	<p class="analysis-paragraph"> The following map displays the same routes as the previous one, but aggregates the routes over time, giivng a complete picture of all routes taken for that point in time.</p>
+    	<p class="analysis-paragraph"> The following map displays the same routes as the previous one, but aggregates the routes over time, givng a complete picture of all routes taken for that point in time (be sure to <b>click play</b>).</p>
     	<h2 class="chart-title">Cumulative Hubway Trips - August 9, 2016 | Uber Value Differential</h2>
 	    <div class="torque-wrapper">
 	    	<h2 class="torque-header">
@@ -97,7 +97,7 @@
 
   	<div class="analysis-section">
   		<h1 class="section-title">Visualizing Hubway vs. Transit</h1>
-  		<p class="analysis-paragraph"> We also compared Hubway trips to transit trips, assuming a cost of $2.25 for each transit trip and getting trip time from Google Maps API. Hubway is generally faster than transit (at least from Hubway station to Hubway station), so cost per minute increases actually increases Hubway's value relative to transit.</p>
+  		<p class="analysis-paragraph"> We also compared Hubway trips to transit trips, assuming a cost of $2.25 for each transit trip and getting trip time from Google Maps API. Hubway is generally faster than transit (at least from Hubway station to Hubway station), so cost per minute increases actually increases Hubway's value relative to transit (be sure to <b>click play</b>).</p>
   		<h2 class="chart-title">Hubway Trips - August 9, 2016 | Transit Value Differential</h2>
 		    <!--transit linear map-->
 		    <div class="torque-wrapper">
@@ -319,10 +319,10 @@
 
           			$( "div#uber_linear_v_slider" ).slider({
   						stop: function( event, ui ) {
-  							layer.pause()
-  							var sql_query = 'SELECT (CASE WHEN (uber_cost - uber_duration_delta*' + (ui.value*.20) + ') <= 0 THEN 1 ELSE 2 END) AS uber_value, hubway_trips_20160809.* FROM hubway_trips_20160809'
+  							layer.pause();
+  							var sql_query = 'SELECT (CASE WHEN (uber_cost - uber_duration_delta*' + (ui.value*.20) + ') <= 0 THEN 1 ELSE 2 END) AS uber_value, hubway_trips_20160809.* FROM hubway_trips_20160809';
   							layer.setSQL(sql_query);
-  							layer.play()
+  							layer.play();
   						}
 					});
 
@@ -448,9 +448,10 @@
 
           			$( "div#uber_cumulative_v_slider" ).slider({
   						stop: function( event, ui ) {
-  							var sql_query = 'SELECT (CASE WHEN (uber_cost - uber_duration_delta*' + (ui.value*.20) + ') <= 0 THEN 1 ELSE 2 END) AS uber_value, hubway_trips_20160809.* FROM hubway_trips_20160809'
-  							console.log(sql_query)
+  							layer.pause();
+  							var sql_query = 'SELECT (CASE WHEN (uber_cost - uber_duration_delta*' + (ui.value*.20) + ') <= 0 THEN 1 ELSE 2 END) AS uber_value, hubway_trips_20160809.* FROM hubway_trips_20160809';
   							layer.setSQL(sql_query);
+  							layer.play();
   						}
 					});
 
@@ -528,6 +529,9 @@
 		  	cartodb.createLayer(transit_linear_map, torque_transit_linear_layer, {time_slider:false})
 				.addTo(transit_linear_map)
 				.done(function(layer) {
+					$("div#transit_linear_pause_button").removeClass("torque-pause");
+					$("div#transit_linear_pause_button").addClass("torque-pause play");
+					layer.pause();
 					// add timer
           			layer.on('change:time', function(changes) {
           				datetime = changes["time"];
@@ -573,9 +577,10 @@
 
           			$( "div#transit_linear_v_slider" ).slider({
   						stop: function( event, ui ) {
-  							var sql_query = 'SELECT (CASE WHEN (2.25- transit_duration_delta*' + (ui.value*.20) + ') <= 0 THEN 1 ELSE 2 END) AS transit_value, hubway_trips_20160809.* FROM hubway_trips_20160809'
-  							console.log(sql_query)
+  							layer.pause();
+  							var sql_query = 'SELECT (CASE WHEN (2.25- transit_duration_delta*' + (ui.value*.20) + ') <= 0 THEN 1 ELSE 2 END) AS transit_value, hubway_trips_20160809.* FROM hubway_trips_20160809';
   							layer.setSQL(sql_query);
+  							layer.play();
   						}
 					});
 
@@ -653,6 +658,9 @@
 		  	cartodb.createLayer(transit_cumulative_map, torque_transit_cumulative_layer, {time_slider:false})
 				.addTo(transit_cumulative_map)
 				.done(function(layer) {
+					$("div#transit_cumulative_pause_button").removeClass("torque-pause");
+					$("div#transit_cumulative_pause_button").addClass("torque-pause play");
+					layer.pause();
 					// add timer
           			layer.on('change:time', function(changes) {
           				datetime = changes["time"];
@@ -698,9 +706,10 @@
 
           			$( "div#transit_cumulative_v_slider" ).slider({
   						stop: function( event, ui ) {
-  							var sql_query = 'SELECT (CASE WHEN (2.25- transit_duration_delta*' + (ui.value*.20) + ') <= 0 THEN 1 ELSE 2 END) AS transit_value, hubway_trips_20160809.* FROM hubway_trips_20160809'
-  							console.log(sql_query)
+  							layer.pause();
+  							var sql_query = 'SELECT (CASE WHEN (2.25- transit_duration_delta*' + (ui.value*.20) + ') <= 0 THEN 1 ELSE 2 END) AS transit_value, hubway_trips_20160809.* FROM hubway_trips_20160809';
   							layer.setSQL(sql_query);
+  							layer.play();
   						}
 					});
 
