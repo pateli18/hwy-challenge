@@ -623,7 +623,7 @@
 				'-torque-time-attribute: "timestamp";',
 				'-torque-aggregation-function: "avg(transit_value)";',
 				'-torque-frame-count: 1021;',
-				'-torque-animation-duration: 60;',
+				'-torque-animation-duration: 24;',
 				'-torque-resolution: 1;',
 				'-torque-data-aggregation: "cumulative";',
 				'}',
@@ -671,7 +671,7 @@
 							var strTime = hours + ':' + minutes + ' ' + ampm + " EST";
 	          				$("div#torque-time-transit-cumulative").text(strTime);
 
-	          				if(minutes_raw % 10 == 0) {
+	          				if(minutes_raw % 60 == 0) {
 		          				var minute_in_day = hours_raw * 60 + minutes_raw;
 		          				var minute_value = $( "div#transit_cumulative_v_slider" ).slider( "value" ) * .20
 								transit_cost_sql_statement ='SELECT SUM(saved_value_all) AS saved_value FROM (SELECT AVG(transit_value) AS saved_value_all FROM (SELECT (2.25- transit_duration_delta *' + minute_value + ') AS transit_value, trip,minute_in_day FROM hubway_trips_20160809 WHERE minute_in_day <= ' + minute_in_day + ') AS transit_value_table GROUP BY trip) AS transit_value_table_avg';
