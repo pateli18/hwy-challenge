@@ -400,6 +400,9 @@
 		  	cartodb.createLayer(uber_cumulative_map, torque_uber_cumulative_layer, {time_slider:false})
 				.addTo(uber_cumulative_map)
 				.done(function(layer) {
+					$("div#uber_cumulative_pause_button").removeClass("torque-pause");
+					$("div#uber_cumulative_pause_button").addClass("torque-pause play");
+					layer.pause();
 					// add timer
           			layer.on('change:time', function(changes) {
           				datetime = changes["time"];
