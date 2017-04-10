@@ -319,9 +319,10 @@
 
           			$( "div#uber_linear_v_slider" ).slider({
   						stop: function( event, ui ) {
+  							layer.pause()
   							var sql_query = 'SELECT (CASE WHEN (uber_cost - uber_duration_delta*' + (ui.value*.20) + ') <= 0 THEN 1 ELSE 2 END) AS uber_value, hubway_trips_20160809.* FROM hubway_trips_20160809'
-  							console.log(sql_query)
   							layer.setSQL(sql_query);
+  							layer.play()
   						}
 					});
 
