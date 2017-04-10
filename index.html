@@ -13,7 +13,7 @@
 
   	<!-- Header -->
   	<div class="page-head">
-  		<h1 class="page-title">Hubway vs. Uber</h1>
+  		<h1 class="page-title">THE VALUE OF HUBWAY</h1>
   	</div>
 
   	<!--uber linear map-->
@@ -34,7 +34,7 @@
 	      		<div class="torque-pause" id="uber_linear_pause_button"></div>
 	      		<div class="torque-slider" id="uber_linear_slider"></div>
 	      	</div>
-	      	<div id="uber_linear_map" class="maps" style="background:#242426"></div>
+	      	<div id="uber_linear_map" class="maps" style="background:#0E0E0E"></div>
 	    </div>
 	    <p class="analysis-paragraph"> Over the past three years, I’ve read more than 200 non-fiction books. I’ve dived into Philosophy, Marketing, Productivity, Evolution, History, Biographies, and many other books you read to learn something.</p>
 
@@ -53,7 +53,7 @@
 	      		<div class="torque-pause" id="uber_cumulative_pause_button"></div>
 	      		<div class="torque-slider" id="uber_cumulative_slider"></div>
 	      	</div>
-	      	<div id="uber_cumulative_map" class="maps" style="background:#242426"></div>
+	      	<div id="uber_cumulative_map" class="maps" style="background:#0E0E0E"></div>
 	    </div>
 	</div>
 
@@ -75,7 +75,7 @@
 		      		<div class="torque-pause" id="transit_linear_pause_button"></div>
 		      		<div class="torque-slider" id="transit_linear_slider"></div>
 		      	</div>
-		      	<div id="transit_linear_map" class="maps" style="background:#242426"></div>
+		      	<div id="transit_linear_map" class="maps" style="background:#0E0E0E"></div>
 		    </div>
 
     <!--transit cumulative map-->
@@ -93,7 +93,7 @@
 	      		<div class="torque-pause" id="transit_cumulative_pause_button"></div>
 	      		<div class="torque-slider" id="transit_cumulative_slider"></div>
 	      	</div>
-	      	<div id="transit_cumulative_map" class="maps" style="background:#242426"></div>
+	      	<div id="transit_cumulative_map" class="maps" style="background:#0E0E0E"></div>
 	    	</div>
    </div>
 <!-- JAVASCRIPT -->
@@ -177,6 +177,9 @@
 			var map_lat = 42.358611;
 			var map_lng = -71.066734;
 
+      var positive = '#ffffff';
+      var negative = '#3c93a8';
+
 		// uber_linear_map object
 		    var uber_linear_map = L.map('uber_linear_map',{ center: [map_lat, map_lng], zoom: 12});
 
@@ -198,10 +201,10 @@
 				'  comp-op: "lighter";',
 				'}',
 				'#layer[value <= 1.5] {',
-				'  marker-fill: #ff0000;',
+				'  marker-fill: '+negative+';',
 				'}',
 				'#layer[value > 1.5] {',
-				'  marker-fill: #44a93d;',
+				'  marker-fill: '+positive+';',
 				'}',
 
 			].join('\n');
@@ -323,10 +326,10 @@
 				'  comp-op: "lighter";',
 				'}',
 				'#layer[value <= 1.5] {',
-				'  marker-fill: #ff0000;',
+				'  marker-fill: '+negative+';',
 				'}',
 				'#layer[value > 1.5] {',
-				'  marker-fill: #44a93d;',
+				'  marker-fill: '+positive+';',
 				'}',
 
 			].join('\n');
@@ -448,10 +451,10 @@
 				'  comp-op: "lighter";',
 				'}',
 				'#layer[value <= 1.5] {',
-				'  marker-fill: #ff0000;',
+				'  marker-fill:  '+negative+';',
 				'}',
 				'#layer[value > 1.5] {',
-				'  marker-fill: #44a93d;',
+				'  marker-fill:  '+positive+';',
 				'}',
 
 			].join('\n');
@@ -573,10 +576,10 @@
 				'  comp-op: "lighter";',
 				'}',
 				'#layer[value <= 1.5] {',
-				'  marker-fill: #ff0000;',
+				'  marker-fill:  '+negative+';',
 				'}',
 				'#layer[value > 1.5] {',
-				'  marker-fill: #44a93d;',
+				'  marker-fill:  '+positive+';',
 				'}',
 
 			].join('\n');
