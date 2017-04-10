@@ -24,7 +24,7 @@
 
   	<!--Introduction-->
   	<div class="analysis-section">
-  		<p class="analysis-paragraph">One of Hubway's significant advantages over other transportation service providers is the effectively zero marginal cost for every ride. We wanted to compare the value of each Hubway trip to a similar Uber trip and identify the areas where Hubway users generate the most value. Using the Uber API and latitude / longitude coordinates for every Hubway station, we were able to pull uber cost and trip time data between each start and end station pair (referred to as a route) in 2016. Specifically, we used the Uber X "High Estimate" for cost and Uber X "Duration" fortrip time. For Hubway's trip time, we used the bicycling trip time from the Google Maps API, to be consistent.</p>
+  		<p class="analysis-paragraph">One of Hubway's significant advantages over other transportation service providers is the effectively zero marginal cost for every ride. We wanted to compare the value of each Hubway trip to a similar Uber trip and identify the areas where Hubway users generate the most value. Using the Uber API and latitude / longitude coordinates for every Hubway station, we were able to pull uber cost and trip time data between each start and end station pair (referred to as a route) in 2016. Specifically, we used the Uber X "High Estimate" for cost and Uber X "Duration" for trip time. For Hubway's trip time, we used the bicycling trip time from the Google Maps API, to be consistent.</p>
   	</div>
 
   	<!--Duration Differences-->
@@ -40,7 +40,7 @@
   	<!--Value Differences-->
   	<div class="analysis-section">
   		<h1 class="section-title">Hubway's Value Advantage</h1>
-  		<p class="analysis-paragraph">So if Hubway is superior in terms of cost and Uber is superior in terms of trip time, which service provider gives riders the most value? To figure this out, we decided to value assign a monetary value to each minute of trip time saved or lost. As the chart below shows, even at a value of $3.40 per minute (which would put someone in the top 1% of the United States in terms of income), Hubway provides more value than Uber for more than 50% of all 2016 Hubway trips taken. At Uber's own current cost per minute for rides in the Boston area (20 cents per minute), Hubway provides more value for <b>all trips</b>.</p>
+  		<p class="analysis-paragraph">So if Hubway is superior in terms of cost and Uber is superior in terms of trip time, which service provider gives riders the most value? To figure this out, we decided to assign a monetary value to each minute of trip time saved or lost. As the chart below shows, even at a value of $3.40 per minute (which would put someone in the top 1% of the United States in terms of income), Hubway provides more value than Uber for more than 50% of all 2016 Hubway trips taken. At Uber's own current cost per minute for rides in the Boston area (20 cents per minute), Hubway provides more value for <b>all trips</b>.</p>
   		<h2 class="chart-title">Proportion of Hubway Routes / Trips with Greater Value than Uber - 2016</h2>
   		<div class="tableau-wrapper">
   			<div class='tableauPlaceholder' id='viz1491836995695' style='position: relative'><noscript><a href='#'><img alt='Dashboard 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;va&#47;valuedeltas&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='site_root' value='' /><param name='name' value='valuedeltas&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;va&#47;valuedeltas&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1491836995695');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='1004px';vizElement.style.height='869px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
@@ -51,7 +51,7 @@
   	<div class="analysis-section">
   		<h1 class="section-title">Visualizing Hubway vs. Uber</h1>
   		<!--uber linear map-->
-  		<p class="analysis-paragraph"> We wanted to visualize the actual routes and their value deltas over time, so we created the animated maps for Hubway trips taken on Tuesday, August 9, 2016, the busiest day of the year for Hubway in 2016 in terms of trips taken. Routing and trip time information was taken for bicycling from the Google Maps API. Driving trip times were also taken from the Google Maps API to account for traffic at different times of the day (the Uber API does not allow you to request trip times for a specific time of day).</p>
+  		<p class="analysis-paragraph"> We wanted to visualize the actual routes and their value deltas over time, so we created the animated maps for Hubway trips taken on Tuesday, August 9, 2016, the busiest day of the year for Hubway in 2016 in terms of trips taken. Routing and trip time information for bicycling were taken from the Google Maps API. Driving trip times were also taken from the Google Maps API to account for traffic at different times of the day (the Uber API does not allow you to request trip times for a specific time of day).</p>
   		<p class="analysis-paragraph"> You can specify the cost per minute to use by sliding the bar, with white routes indicating superior Hubway value and blue routes indicating superior Uber value. As the cost per minute increases, you should see more blue routes.</p>
   		<p class="analysis-paragraph"> <b>Note:</b> If you do not see anything on the maps, please be sure to enable scripts on your browser (Chrome should display a little icon with a red "x" on the far right of the address bar)</p>
   		<h2 class="chart-title">Hubway Trips - August 9, 2016 | Uber Value Differential</h2>
@@ -74,7 +74,7 @@
 	    </div>
 
     <!--uber cumulative map-->
-    	<p class="analysis-paragraph"> The following map displays the same routes as the previous one, but aggregates the routes over time, givng a complete picture of all routes taken for that point in time (be sure to <b>click play</b>).</p>
+    	<p class="analysis-paragraph"> The following map displays the same routes as the previous one, but aggregates the routes over time, giving a complete picture of all routes taken for that point in time (be sure to <b>click play</b>).</p>
     	<h2 class="chart-title">Cumulative Hubway Trips - August 9, 2016 | Uber Value Differential</h2>
 	    <div class="torque-wrapper">
 	    	<h2 class="torque-header">
@@ -97,7 +97,7 @@
 
   	<div class="analysis-section">
   		<h1 class="section-title">Visualizing Hubway vs. Transit</h1>
-  		<p class="analysis-paragraph"> We also compared Hubway trips to transit trips, assuming a cost of $2.25 for each transit trip and getting trip time from Google Maps API. Hubway is generally faster than transit (at least from Hubway station to Hubway station), so cost per minute increases actually increases Hubway's value relative to transit (be sure to <b>click play</b>).</p>
+  		<p class="analysis-paragraph"> We also compared Hubway trips to transit trips, assuming a cost of $2.25 for each transit trip and getting trip time from Google Maps API. Hubway is generally faster than transit (at least from Hubway station to Hubway station), so cost per minute actually increases Hubway's value relative to transit (be sure to <b>click play</b>).</p>
   		<h2 class="chart-title">Hubway Trips - August 9, 2016 | Transit Value Differential</h2>
 		    <!--transit linear map-->
 		    <div class="torque-wrapper">
