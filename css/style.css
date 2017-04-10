@@ -61,6 +61,14 @@ body {
   position: relative;
 }
 
+.tableau-wrapper {
+  width: 750px;
+  height: 375px;
+  background: #0E0E0E;
+  position: relative;
+  margin-bottom: 20px;
+}
+
 .torque-header {
   position:absolute;
   right:10px;
