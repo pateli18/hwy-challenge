@@ -95,7 +95,7 @@ body {
 
 .torque-controls-value {
     position: absolute;
-    bottom: 100px;
+    bottom: 70px;
     right: 0;
     padding: 8px 12px;
     z-index: 4;
@@ -112,24 +112,26 @@ body {
 
 .torque-time-slider-label {
     position: absolute;
-    bottom: 55px;
+    bottom: 50px;
     right: 0;
     z-index: 4;
-    width: 200px;
+    width: 225px;
     text-align: center;
     color: #ffffff;
-    font-size: .4em;
+    font-size: .8em;
+    font-family:Roboto Mono,monospace;
 }
 
 .torque-value-slider-label {
     position: absolute;
-    bottom: 140px;
+    bottom: 95px;
     right: 0;
     z-index: 4;
-    width: 200px;
+    width: 225px;
     text-align: center;
     color: #FFB927;
-    font-size: .4em;
+    font-size: .8em;
+    font-family:Roboto Mono,monospace;
 }
 
 .torque-pause {
