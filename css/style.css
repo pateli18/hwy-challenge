@@ -58,7 +58,7 @@ body {
 .torque-wrapper {
   width: 750px;
   height: 375px;
-  background: white;
+  background: none;
   position: relative;
 }
 
@@ -73,7 +73,7 @@ body {
 .torque-header {
   position:absolute;
   right:10px;
-  color:#ffffff;
+  color:#333;
   text-align:right;
   font-family:Roboto Mono,monospace;
   z-index:2;
@@ -118,7 +118,7 @@ body {
     z-index: 4;
     width: 225px;
     text-align: center;
-    color: #ffffff;
+    color: black;
     font-size: .8em;
     font-family:Roboto Mono,monospace;
 }
