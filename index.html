@@ -231,6 +231,7 @@
 
       		var positive = '#48A843';
       		var negative = '#FDB83B';
+          var negative_transit = '#3c93a8';
 
 		// uber_linear_map object
 		    var uber_linear_map = L.map('uber_linear_map',{ center: [map_lat, map_lng], zoom: 12});
@@ -508,7 +509,7 @@
 				'  comp-op: "lighter";',
 				'}',
 				'#layer[value <= 1.5] {',
-				'  marker-fill:  '+negative+';',
+				'  marker-fill:  '+negative_transit+';',
 				'}',
 				'#layer[value > 1.5] {',
 				'  marker-fill:  '+positive+';',
@@ -637,7 +638,7 @@
 				'  comp-op: "lighter";',
 				'}',
 				'#layer[value <= 1.5] {',
-				'  marker-fill:  '+negative+';',
+				'  marker-fill:  '+negative_transit+';',
 				'}',
 				'#layer[value > 1.5] {',
 				'  marker-fill:  '+positive+';',
