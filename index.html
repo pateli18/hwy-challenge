@@ -273,7 +273,7 @@
 					}
 		  		}
 
-		  	cartodb.createLayer(uber_linear_map, torque_uber_linear_layer, {time_slider:false})
+		  	cartodb.createLayer(uber_linear_map, torque_uber_linear_layer, {time_slider:false, https: true })
 				.addTo(uber_linear_map)
 				.done(function(layer) {
 					// add timer
@@ -399,7 +399,7 @@
 					}
 		  		}
 
-		  	cartodb.createLayer(uber_cumulative_map, torque_uber_cumulative_layer, {time_slider:false})
+		  	cartodb.createLayer(uber_cumulative_map, torque_uber_cumulative_layer, {time_slider:false, https: true })
 				.addTo(uber_cumulative_map)
 				.done(function(layer) {
 					$("div#uber_cumulative_pause_button").removeClass("torque-pause");
@@ -528,7 +528,7 @@
 					}
 		  		}
 
-		  	cartodb.createLayer(transit_linear_map, torque_transit_linear_layer, {time_slider:false})
+		  	cartodb.createLayer(transit_linear_map, torque_transit_linear_layer, {time_slider:false, https: true })
 				.addTo(transit_linear_map)
 				.done(function(layer) {
 					$("div#transit_linear_pause_button").removeClass("torque-pause");
@@ -657,7 +657,7 @@
 					}
 		  		}
 
-		  	cartodb.createLayer(transit_cumulative_map, torque_transit_cumulative_layer, {time_slider:false})
+		  	cartodb.createLayer(transit_cumulative_map, torque_transit_cumulative_layer, {time_slider:false, https: true })
 				.addTo(transit_cumulative_map)
 				.done(function(layer) {
 					$("div#transit_cumulative_pause_button").removeClass("torque-pause");
